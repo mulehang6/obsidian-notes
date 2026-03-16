@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "985e08de584759f0",
+        "id": "d9dc2505944d7fbe",
         "type": "tabs",
         "children": [
           {
-            "id": "31245107c02ee1ed",
+            "id": "f4cb216c9bad916e",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
@@ -178,7 +178,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "31245107c02ee1ed",
+  "active": "f4cb216c9bad916e",
   "lastOpenFiles": [
     "JVM-01.excalidraw.md"
   ]
