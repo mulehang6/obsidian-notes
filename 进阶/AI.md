@@ -7,4 +7,21 @@ Function Call的重点是让LLM生成结构化的函数调用参数，由业务�
 - 2. streamable http：更适合远程部署，因为server可以作为独立服务运行，能处理多个客户端的请求，也更方便接入网络服务、认证授权和统一部署
 
 
+# 3. Andrej Karpathy 深入探索类似ChatGPT的LLM
+
+原链接：[Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI&t=75s)
+
+翻译：[【1080P】安德烈·卡帕西：深入探索像ChatGPT这样的大语言模型｜Andrej Karpathy_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV16cNEeXEer/?spm_id_from=333.337.search-card.all.click&vd_source=879771ccf44eae7c71d3d0f3cc895903)
+
+## 1. AI是如何被训练出来的？
+
+### 1. 预训练
+
+- 第一步，准备训练数据集，从网络上下载或者自己收集，大厂(如OpenAI，Anthropic，Google)都有自己的训练数据集，公开数据集例子：[FineWeb: decanting the web for the finest text data at scale - a Hugging Face Space by HuggingFaceFW](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)
+  
+  ![[FIneWeb 管道，提取信息流程.png]]
+  
+- 第二步，tokenlization，分词
+
+
   
