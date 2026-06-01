@@ -21,3 +21,10 @@ canal是一款常用的数据同步工具，其原理是基于binlog订阅的方
 - 1. canal服务端向MySQL的master节点传输dump协议
 - 2. MySQL 的master节点接收到dump请求后推送binlog日志给canal服务端，解析binlog对象(原始为byte流)转换成JSON格式
 - 3. canal客户端通过TCP协议或MQ形式监听canal服务端，同步数据到ES
+
+
+# 2. 踩坑总结
+
+- MySQL binlog文件名默认以设备名开头，我的是中文名，默认会乱码(主要是canal这边的问题)
+- canal截至2026.6.1的最新版：1.1.8，依旧只能使用(或者说最好使用Java8来启动)
+- 依旧忘记了es密码，又重置了一遍
