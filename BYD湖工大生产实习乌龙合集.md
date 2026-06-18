@@ -4,6 +4,31 @@ PPT上讲的还挺时尚，还有RAG，现在看文档看下来连redis都没有
 
 补一张上课的时候教室网络的测速。。。
 ![[网速截图.png]]
+
+以下为gpt读了原文档之后的评价：
+
+看了，这套东西**真的不像有 Redis**。文档里写得很直白，是一个偏老的传统 Java Web 项目。
+
+技术栈大概是：
+
+|层|技术|
+|---|---|
+|前端|RequireJS + jQuery + ArtTemplate + Bootstrap|
+|前端构建|gulp + Node 环境 + Less|
+|后端|SpringMVC 4.0 + MyBatis|
+|数据库|MySQL|
+|通用工具|Jackson、Log4J、MD5、文件上传/下载、序列号生成、分页 Query/PageObject|
+|开发环境|Windows|
+
+概要设计里明确写了：前端是 `RequireJs + Jquery + ArtTemplate + BootStrap`，后端是 `Springmvc4.0 + mybatis + mysql`。 后面又补充了 gulp、Node、Less、Common.js、ajax 封装、文件上传、分页、提示框等前端公共封装。
+
+数据库这边，SQL 文件是 `db_factory`，表结构也都是典型 MySQL 表，比如 `t_equipment`、`t_factory`、`t_order_track`，使用 InnoDB、utf8。
+
+所以结论是：**按现有文档和 SQL 来看，没有 Redis，也没有 Kafka、RabbitMQ、ES、Spring Boot、Spring Cloud 这些东西。** 甚至登录还挺原始，概要设计里写的是拦截器里做了模拟登录，并使用 `session`，后期才考虑改成 cookie。
+
+这更像一个 **SpringMVC + MyBatis + MySQL 的单体 CRUD/流程管理系统**，主要做产品管理、设备管理、订单管理、生产计划、生产调度、生产跟踪这些业务。
+
+面试或答辩里别硬说 Redis。最多可以说：“原始设计中未引入 Redis；如果后续优化，可以把登录会话、首页统计、设备状态看板等高频查询接入 Redis 缓存。”
 # 2026.6.15
 
 ## 1. 灯坏了，直接让换寝室，警告一次，白擦一次桌子柜子
