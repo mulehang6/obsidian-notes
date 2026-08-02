@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ring UI Build"
+  short_description: "Guide agents to use Ring UI built package"
+  default_prompt: "Use $ring-ui-build to add or fix Ring UI components in this project."
