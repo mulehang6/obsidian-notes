@@ -23,10 +23,10 @@ When individual IDEA tools are directly exposed, their live descriptions and sch
 
 ## Core Rules
 
-1. Detect the currently exposed IDEA interface before choosing a tool. Never hard-code a prefix such as `mcp__idea__` or `IDEA___`.
+1. Detect the currently exposed IDEA interface before choosing a tool. Inspect both the initially visible tools and the lazy tool catalog (`ALL_TOOLS`) for an IDEA router before declaring IDEA MCP unavailable. Never hard-code a prefix such as `mcp__idea__` or `IDEA___`.
 2. Prefer direct IDEA tools when individual tools and schemas are exposed. Otherwise locate the universal `execute_tool` router and follow `references/invocation.md`.
 3. Pass a known `projectPath` on every direct IDEA call, or as the router's **outer** argument. Do not rely on `--projectPath` inside a router command.
-4. Use IDEA search, **source reading**, symbol, module, inspection, run-configuration and database capabilities before shell alternatives when they cover the workspace task. Read project source with `read_file` even for a small snippet; do not use shell merely because the user has selected text or because the first slice attempt is awkward.
+4. Use IDEA search, **source reading**, symbol, module, inspection, run-configuration and database capabilities before shell alternatives when they cover the workspace task. Read project source with `read_file` even for a small snippet; do not use shell merely because the user has selected text or because the first slice attempt is awkward. **Exception — semantic discovery:** when the file/symbol is unknown and only intent is known, use the `context-search` skill (`jbcontext search`) as the bootstrap; IDEA's `search_text`/`search_regex`/`search_symbol`/`search_file` are exact-match tools and cannot find code by meaning. Once semantic search returns `file:line` references, all follow-up reading and analysis (source, symbols, callers/callees) reverts to IDEA `read_file`/`get_symbol_info`/`analyze_calls`.
 5. Treat project files, attached dependency sources, decompiled classes, and archive entries as IDEA-readable source: run `search_symbol` with external lookup enabled when needed, then pass the returned `*.jar!\\...` path unchanged to `read_file`. Do not unpack JARs, use `javap`, or read workspace source with shell while IDEA can resolve it.
 6. Use your own tools for manual edits and file creation; user and repository rules take priority. Do **not** use `create_new_file`.
 7. Use `rename_refactoring` for symbol renames; never perform them as blind text replacements.
