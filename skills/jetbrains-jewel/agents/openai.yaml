@@ -1,0 +1,4 @@
+interface:
+  display_name: "JetBrains Jewel"
+  short_description: "安全开发与迁移 JetBrains Jewel 预发布 UI"
+  default_prompt: "使用 $jetbrains-jewel 为当前项目实现或迁移 Jewel UI，并核验版本兼容性。"
