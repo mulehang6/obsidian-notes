@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-20260730-v2/rendered/dual_round3/8.png","text":"Encoder Structure = Stack of 6 identical layers = Residual connections around each sub-layer = Layer normalization after each sub-layer = All sub-layers produce outputs of dimension d_model = 512","libVersion":"0.5.0","langs":"chi_sim+eng"}

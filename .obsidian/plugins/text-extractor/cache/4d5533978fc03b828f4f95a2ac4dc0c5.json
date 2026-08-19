@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-20260730-v2/rendered/dual_round3/21.png","text":"I\\/Iachine Translation RGSUltS Model EN-DE BLEU EN-FR BLEU Training Cost (FLOPs) GNMT + RL Ensemble 26.30 41.16 1.8 . 1020 ConvS2S Ensemble 26.36 41.29 7.7 . 1019 Transformer (big) 28.4 41.8 2.3 . 1019","libVersion":"0.5.0","langs":"chi_sim+eng"}

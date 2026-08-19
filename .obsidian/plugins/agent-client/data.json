@@ -1,0 +1,187 @@
+{
+  "presetAgents": {
+    "claude-code-acp": {
+      "id": "claude-code-acp",
+      "displayName": "Claude Code",
+      "apiKeySecretId": "",
+      "command": "claude-agent-acp",
+      "args": [],
+      "env": [],
+      "enabled": true
+    },
+    "codex-acp": {
+      "id": "codex-acp",
+      "displayName": "Codex",
+      "apiKeySecretId": "",
+      "command": "D:\\nodejs\\codex-acp",
+      "args": [],
+      "env": [],
+      "enabled": true
+    },
+    "gemini-cli": {
+      "id": "gemini-cli",
+      "displayName": "Gemini CLI",
+      "apiKeySecretId": "",
+      "command": "gemini",
+      "args": [
+        "--experimental-acp"
+      ],
+      "env": [],
+      "enabled": true
+    },
+    "mistral-vibe": {
+      "id": "mistral-vibe",
+      "displayName": "Mistral Vibe",
+      "apiKeySecretId": "",
+      "command": "vibe-acp",
+      "args": [],
+      "env": [],
+      "enabled": true
+    },
+    "opencode": {
+      "id": "opencode",
+      "displayName": "OpenCode",
+      "apiKeySecretId": "",
+      "command": "opencode",
+      "args": [
+        "acp"
+      ],
+      "env": [],
+      "enabled": true
+    },
+    "kiro-cli": {
+      "id": "kiro-cli",
+      "displayName": "Kiro",
+      "apiKeySecretId": "",
+      "command": "kiro-cli",
+      "args": [
+        "acp"
+      ],
+      "env": [],
+      "enabled": true
+    },
+    "hermes-agent": {
+      "id": "hermes-agent",
+      "displayName": "Hermes Agent",
+      "apiKeySecretId": "",
+      "command": "hermes",
+      "args": [
+        "acp"
+      ],
+      "env": [],
+      "enabled": true
+    }
+  },
+  "customAgents": [],
+  "defaultAgentId": "claude-code-acp",
+  "autoAllowPermissions": false,
+  "autoMentionActiveNote": true,
+  "expandWikilinkContext": true,
+  "enableSystemNotifications": true,
+  "promptInjection": {
+    "enabled": true,
+    "latex": true,
+    "wikiLinks": true,
+    "tables": true
+  },
+  "debugMode": false,
+  "nodePath": "D:\\nodejs\\node.exe",
+  "exportSettings": {
+    "defaultFolder": "Agent Client",
+    "filenameTemplate": "agent_client_{date}_{time}",
+    "autoExportOnNewChat": false,
+    "autoExportOnCloseChat": false,
+    "openFileAfterExport": true,
+    "includeImages": true,
+    "imageLocation": "obsidian",
+    "imageCustomFolder": "Agent Client",
+    "frontmatterTag": "agent-client"
+  },
+  "windowsWslMode": false,
+  "sendMessageShortcut": "enter",
+  "chatViewLocation": "right-tab",
+  "displaySettings": {
+    "autoCollapseDiffs": false,
+    "diffCollapseThreshold": 10,
+    "maxNoteLength": 10000,
+    "maxSelectionLength": 10000,
+    "showEmojis": true,
+    "fontSize": null
+  },
+  "savedSessions": [
+    {
+      "sessionId": "d2d1374b-2311-4e96-b911-2e53658fbeb2",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "CoT是什么",
+      "createdAt": "2026-08-11T09:47:11.699Z",
+      "updatedAt": "2026-08-11T10:16:40.619Z"
+    },
+    {
+      "sessionId": "f38f68bc-1ad6-4eae-9ccf-96a4e22f9b7f",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "第一章说上下文分成哪五个部分？",
+      "createdAt": "2026-08-11T08:17:29.477Z",
+      "updatedAt": "2026-08-11T08:17:29.480Z"
+    },
+    {
+      "sessionId": "e6e1d39c-495d-48ac-a9ee-538e3c138515",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "https://github.com/bojieli/ai-agent-book 把这个作为g...",
+      "createdAt": "2026-08-08T08:39:37.009Z",
+      "updatedAt": "2026-08-08T09:03:32.426Z"
+    },
+    {
+      "sessionId": "de8952f0-2f93-4d59-8d86-5c656c145f92",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "帮我把==高亮的部分全都换成<mark style=\"background-color: #F...",
+      "createdAt": "2026-08-07T06:52:30.384Z",
+      "updatedAt": "2026-08-07T06:52:37.365Z"
+    },
+    {
+      "sessionId": "019e1fec-5556-7531-b722-df80e8be7b48",
+      "agentId": "codex-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "将.trash文件夹添加到gitignore",
+      "createdAt": "2026-05-13T06:02:05.312Z",
+      "updatedAt": "2026-05-13T06:02:05.312Z"
+    },
+    {
+      "sessionId": "019e1abb-6cd9-7433-be51-21de55cc1322",
+      "agentId": "codex-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "帮我提交git，并先把我的自我介绍从git历史记录中完全移除，因为我不小心把我的真实姓名先上去了，现...",
+      "createdAt": "2026-05-12T05:59:12.200Z",
+      "updatedAt": "2026-05-12T05:59:12.200Z"
+    },
+    {
+      "sessionId": "019e1784-252d-7d42-8baf-a416737bc860",
+      "agentId": "codex-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "帮我进行git提交",
+      "createdAt": "2026-05-11T14:51:42.642Z",
+      "updatedAt": "2026-05-11T14:51:42.642Z"
+    }
+  ],
+  "lastUsedModels": {},
+  "lastUsedModes": {
+    "codex-acp": "full-access",
+    "claude-code-acp": "auto"
+  },
+  "lastUsedConfigOptions": {
+    "claude-code-acp": {
+      "effort": "max"
+    }
+  },
+  "enableFloatingChat": false,
+  "floatingButtonImage": "",
+  "floatingWindowSize": {
+    "width": 400,
+    "height": 500
+  },
+  "floatingWindowPosition": null,
+  "floatingButtonPosition": null
+}

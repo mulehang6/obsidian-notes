@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-both-20260730-v6/rendered/dual_round1/17.png","text":"Generalization to Other Tasks = English Constituency Parsing: = 91.3 F1 on WSJ only (comparable to state-of-the-art) = 92.7 F1 with semi-supervised training = Performs well with minimal task-specific tuning","libVersion":"0.5.0","langs":"chi_sim+eng"}

@@ -1,0 +1,958 @@
+{
+  "version": 1,
+  "sessionId": "de8952f0-2f93-4d59-8d86-5c656c145f92",
+  "agentId": "claude-code-acp",
+  "cwd": "D:\\obsidian-notes",
+  "title": "帮我把==高亮的部分全都换成<mark style=\"background-color: #F...",
+  "createdAt": "2026-08-07T06:52:30.384Z",
+  "updatedAt": "2026-08-07T06:52:30.387Z",
+  "messages": [
+    {
+      "id": "29656b60-1a71-4a67-96f6-f08b118a6fc5",
+      "role": "user",
+      "content": [
+        {
+          "type": "text_with_context",
+          "text": "帮我把==高亮的部分全都换成<mark style=\"background-color: #FFF3A3A6;\">",
+          "autoMentionContext": {
+            "noteName": "chapter1",
+            "notePath": "AI-Agent/chapter1.md"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:50:59.666Z"
+    },
+    {
+      "id": "723bc1db-4682-4f96-a496-97840cbaf650",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "agent_thought",
+          "text": "The user wants me to replace highlighted parts in chapter1.md with `<mark style=\"background-color: #FFF3A3A6;\">` HTML mark tags.\n\nFirst, let me check the skills situation. The user's request is about editing a markdown file (Obsidian note) to replace `==highlights==` with `<mark style=\"background-color: #FFF3A3A6;\">...</mark>`.\n\nIs there a skill that applies? Let me think:\n- This is a simple text transformation task in an Obsidian vault\n- The file is at D:\\obsidian-notes\\AI-Agent\\chapter1.md\n- No skill really covers \"replace ==text== with <mark> tags\" — this is a simple file edit task\n- The user's global instructions say to use andrej-karpathy-skills, idea mcp etc., but those are for JetBrains projects. This is an Obsidian vault, not a JetBrains project. The IDEA MCP wouldn't apply here since this is not a JetBrains IDE project.\n\nLet me check the file first to see the highlighted parts. The user says \"把==高亮的部分全都换成<mark style=\"background-color: #FFF3A3A6;\">\" — replace all the ==highlighted== parts with `<mark style=\"background-color: #FFF3A3A6;\">`.\n\nWait, I need to understand: in Obsidian, `==text==` is the highlight syntax. The user wants to convert these to HTML mark tags with a specific background color: `<mark style=\"background-color: #FFF3A3A6;\">text</mark>`.\n\nLet me read the file first to see what's there. The file is open in Obsidian. Let me read it.\n\nThe file might be large. Let me read it and find the `==` highlights.\n\nI should check the file for `==` patterns. Let me first read the file."
+        },
+        {
+          "type": "text",
+          "text": "我先读取 chapter1.md 查看高亮内容。"
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:00.802Z"
+    },
+    {
+      "id": "f339da26-9d5f-4b8c-840e-d2e7e171ffd3",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_IEAjdBMnLyDGkjhextOQ7757",
+          "title": "Read AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "read",
+          "content": [],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 1
+            }
+          ],
+          "rawInput": {
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md"
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "The user wants to replace all `==highlight==` syntax with `<mark style=\"background-color: #FFF3A3A6;\">highlight</mark>` in chapter1.md.\n\nLet me find all the `==...==` occurrences in the file:\n\n1. Line 63: `==**协作工具让 Agent ==与其他 Agent 分工合作==` — this is odd. It looks like `==**协作工具让 Agent ==` and `==与其他 Agent 分工合作==`. Wait, let me parse: `==**协作工具让 Agent ==与其他 Agent 分工合作==` — actually there are two highlight markers here: `==**协作工具让 Agent ==` and `==与其他 Agent 分工合作==`. Hmm, that's a weird split. The first `==` pair spans `**协作工具让 Agent ` — bold markdown not closed. Actually this looks like a mistake in the original text where someone was mid-way converting. But I should convert them faithfully:\n\n   - `==**协作工具让 Agent ==` → `<mark style=\"background-color: #FFF3A3A6;\">**协作工具让 Agent </mark>`\n   - `==与其他 Agent 分工合作==` → `<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>`\n\n2. Line 65: `==**事件触发工具**==` → `<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>` and `==作为外部输入来驱动 Agent 开始执行任务==` → `<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>`\n\n3. Line 67: `==**用户沟通工具**==` and `==主动与用户建立连接、传递信息的渠道==`\n\n4. Line 69: `==工具设计的质量直接决定了 Agent 能走多远==`\n\n5. Line 71: `==**工具调用**（Tool Calling，也称 Function Calling）==` and `==\"工具调用\"==`\n\n6. Line 95: `==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==`\n\n7. Line 99: `==通用工具并不总是优于专用工具==` and `==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==`\n\n8. Line 105: `==LLM Agent 的一个独特能力是**内部思考**==`, `==不改变外部环境==`, `==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==`\n\n9. Line 109: `==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==`, `==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==`, `==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==`, `==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==`\n\n10. Line 111: `==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==`, `==对模型与外围 Harness 进行协同优化，持续迭代。==`\n\nNote: There are already some `<mark style=\"background-color: #FFF3A3A6;\">` tags in the file (lines 19, 55, 59, 61, 113, 119). Those are already converted. I only need to convert the remaining `==...==`.\n\nWait, but I should double-check: is there any `==` that's not a highlight? In Obsidian, `==` is highlight. Let me check for single `=` occurrences that aren't part of `==`. Looking at the text, I don't see plain `=`. There's `Agent = LLM（大语言模型...` — single `=`, that's fine.\n\nLet me verify there aren't nested or weird cases. Line 63: `==**协作工具让 Agent ==与其他 Agent 分工合作==`. Hmm wait, actually re-reading: `==**协作工具让 Agent ==与其他 Agent 分工合作==`. \n\nActually this could be parsed as: `==**协作工具让 Agent ==` (highlight containing `**协作工具让 Agent ` — an unclosed bold marker, presumably intentional because the original intent might have been `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — but the `**` is misplaced). I shouldn't fix the content, just convert what's there. But hmm, maybe the intended original was `**协作工具**让 Agent`? The user asked only to convert highlights, not fix typos. I'll convert as-is, preserving the text exactly.\n\nActually wait — should I reconsider? The pattern `==**协作工具让 Agent ==` gives highlight `**协作工具让 Agent `. And `==与其他 Agent 分工合作==` gives `与其他 Agent 分工合作`. Converting faithfully:\n\n`<mark style=\"background-color: #FFF3A3A6;\">**协作工具让 Agent </mark>与其他 Agent 分工合作<mark style=\"background-color: #FFF3A3A6;\">...</mark>`\n\nHmm, that's odd but faithful. The user said \"把高亮的部分全都换成<mark style=\"background-color: #FFF3A3A6;\">\" — replace the highlighted parts all with the mark tag. So faithful conversion is right. I won't change content.\n\nApproach: Since the file has many `==...==` occurrences, I'll do the conversion. Options:\n1. Use Edit tool with multiple replacements.\n2. Use a script (PowerShell regex) — but the user's rules say file editing should use native editing capabilities to ensure visible diffs. The global CLAUDE.md says \"文件编辑使用原生编辑能力，保证可见 diff\" — use native editing (Edit tool) to guarantee visible diffs. So I should use the Edit tool, not a script.\n\nBut there are ~20+ occurrences. Each Edit needs a unique old_string. Many highlights are unique enough. Let me list them all and do edits.\n\nLet me carefully enumerate all `==` pairs in the file:\n\nLine 63: `==**协作工具让 Agent ==与其他 Agent 分工合作==`\n- Edit A: `==**协作工具让 Agent ==` → `<mark style=\"background-color: #FFF3A3A6;\">**协作工具让 Agent </mark>`\n- Edit B: `==与其他 Agent 分工合作==` → `<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>`\n  - Is `==与其他 Agent 分工合作==` unique? Searching the text... \"与其他 Agent 分工合作\" appears only on line 63. OK.\n\nLine 65: `==**事件触发工具**==` and `==作为外部输入来驱动 Agent 开始执行任务==`\n- `==**事件触发工具**==` unique.\n- `==作为外部输入来驱动 Agent 开始执行任务==` unique.\n\nLine 67: `==**用户沟通工具**==` and `==主动与用户建立连接、传递信息的渠道==`\n- `==**用户沟通工具**==` unique.\n- `==主动与用户建立连接、传递信息的渠道==` unique.\n\nLine 69: `==工具设计的质量直接决定了 Agent 能走多远==` unique.\n\nLine 71: `==**工具调用**（Tool Calling，也称 Function Calling）==` and `==\"工具调用\"==`\n- `==\"工具调用\"==` unique.\n\nLine 95: `==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==` unique.\n\nLine 99: `==通用工具并不总是优于专用工具==` and `==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==` — both unique.\n\nLine 105: `==LLM Agent 的一个独特能力是**内部思考**==`, `==不改变外部环境==`, `==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==` — all unique.\n\nLine 109: \n- `==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==` — unique\n- `==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==` — unique\n- `==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==` — unique\n- `==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==` — unique\n\nLine 111:\n- `==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==` — unique\n- `==对模型与外围 Harness 进行协同优化，持续迭代。==` — unique\n\nThat's 19 replacements total (counting line 63's two). Let me count: \n1. `==**协作工具让 Agent ==`\n2. `==与其他 Agent 分工合作==`\n3. `==**事件触发工具**==`\n4. `==作为外部输入来驱动 Agent 开始执行任务==`\n5. `==**用户沟通工具**==`\n6. `==主动与用户建立连接、传递信息的渠道==`\n7. `==工具设计的质量直接决定了 Agent 能走多远==`\n8. `==**工具调用**（Tool Calling，也称 Function Calling）==`\n9. `==\"工具调用\"==`\n10. `==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==`\n11. `==通用工具并不总是优于专用工具==`\n12. `==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==`\n13. `==LLM Agent 的一个独特能力是**内部思考**==`\n14. `==不改变外部环境==`\n15. `==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==`\n16. `==先进模型通过后训练...==` (long)\n17. `==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==`\n18. `==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==`\n19. `==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==`\n20. `==模型自主决策的空间越大...==`\n21. `==对模型与外围 Harness 进行协同优化，持续迭代。==`\n\nThat's 21 edits. That's a lot of Edit calls but they can be done in parallel (all independent, same file — hmm, can multiple edits to the same file run in parallel? They are independent string replacements; the tool applies them sequentially. Multiple Edit calls on the same file in one message should be fine as long as old_strings are unique and don't overlap. The edits don't overlap each other.\n\nActually, to be safe about ordering/parallelism with same-file edits, they're applied in order; since none of the old_strings overlap, all will match regardless of order. \n\nNote about old_string uniqueness: \n- `==不改变外部环境==` — line 105 only. Yes.\n- `==\"工具调用\"==` — line 71 only.\n\nOne concern: `==**工具调用**（Tool Calling，也称 Function Calling）==` — the `==` at start followed by `**`. Fine.\n\nAlso should I double check there aren't other `==` outside these? Let me grep to be thorough. I'll use Grep on the file for `==` to enumerate all occurrences, verify count, then do edits. Actually I already have the full file content. Let me quickly scan visually... Line 19, 55, 59, 61, 113, 119 already have mark tags. I believe my enumeration is complete. But let me grep to be safe since it's cheap and avoids missing any.\n\nLet me run a Grep for `==` with -n to confirm."
+        },
+        {
+          "type": "text",
+          "text": "我已经看到了文件内容。先用 Grep 确认所有 `==高亮==` 的位置，确保没有遗漏："
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:03.609Z"
+    },
+    {
+      "id": "490548b0-3bce-4209-99dd-8d36ad0c81fb",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_2J6ZpM75U3rrGXA41OqJ5245",
+          "title": "grep -n \"==\" D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "search",
+          "content": [],
+          "rawInput": {
+            "pattern": "==",
+            "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "output_mode": "content",
+            "-n": true
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "The grep output shows lines 63-111 with `==` markers. Lines 95, 105, 109 were omitted as long lines. I already have full content from Read, so I know:\n\nLine 95: `==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==`\nLine 105: `==LLM Agent 的一个独特能力是**内部思考**==`, `==不改变外部环境==`, `==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==`\nLine 109: `==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==`, `==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==`, `==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==`, `==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==`\n\nSo all 21 highlights confirmed. Now do the edits. All are independent string replacements on the same file. I'll batch them into parallel Edit calls.\n\nLet me construct each replacement carefully:\n\n1. `==**协作工具**让 Agent ==` → `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>`\n\nWait! Line 63 in the Read output shows: `==**协作工具让 Agent ==与其他 Agent 分工合作==`\n\nBut the Grep shows: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`\n\nHmm! There's a discrepancy. Grep output line 63: `==**协作工具**让 Agent ==与其他 Agent 分工合作==：委托子 Agent...`\n\nRead output line 63: `==**协作工具让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务...`\n\nInteresting — the Read tool output shows `==**协作工具让 Agent ==` but Grep shows `==**协作工具**让 Agent ==`. Wait, let me re-read the Read output:\n\nLine 63: `==**协作工具让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。`\n\nHmm, actually looking at the Read output again very carefully:\n\n\"63\t==**协作工具让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务...\"\n\nHmm wait, in the original Read output I see: `==**协作工具让 Agent ==与其他 Agent 分工合作==`. Let me scroll up... The original text was:\n\n`==**协作工具让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。`\n\nBut grep line 63 shows: `==**协作工具**让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务...`\n\nOne of them has `**` before `让`. This is a conflict! Which is right? The Grep result is from the actual file at query time — more recent. But the Read was also from the file... These two outputs disagree, which is strange. Unless I misread. Let me look at the Read output once more:\n\nFrom my Read result:\n```\n63\t==**协作工具让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n```\n\nHmm, it says `==**协作工具让 Agent ==`. And Grep says `==**协作工具**让 Agent ==`.\n\nOne of these is wrong in my perception. Both are from the tool output. Let me just re-read the specific line to be sure. Actually, maybe I should just read line 63 directly to verify. It's important because my edit old_string must match exactly.\n\nActually, the safest approach: use Edit with old_string that includes the unique full substring, and I need to know whether it's `**协作工具**让 Agent` or `**协作工具让 Agent`. Let me read the file around line 63 to verify."
+        },
+        {
+          "type": "text",
+          "text": "Grep 和 Read 对第 63 行的显示略有出入（`**协作工具**让 Agent` vs `**协作工具让 Agent`），我先精确确认这一行的内容再批量替换："
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:21.616Z"
+    },
+    {
+      "id": "6196bbca-7189-4991-bd1e-1a8a73a88df4",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_o2tcMfRdLXSEN0mOHWgH6243",
+          "title": "Read AI-Agent\\chapter1.md (62 - 65)",
+          "status": "completed",
+          "kind": "read",
+          "content": [],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 62
+            }
+          ],
+          "rawInput": {
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "offset": 62,
+            "limit": 4
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "Confirmed: line 63 is `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — the `**` closes after 协作工具. The earlier Read display was just my misreading. Good.\n\nNow let me do all 21 edits. I'll batch them in parallel. Each old_string must be unique in the file:\n\n1. `==**协作工具**让 Agent ==` → `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>`\n2. `==与其他 Agent 分工合作==` → `<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>`\n3. `==**事件触发工具**==` → `<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>`\n4. `==作为外部输入来驱动 Agent 开始执行任务==` → `<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>`\n5. `==**用户沟通工具**==` → `<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>`\n6. `==主动与用户建立连接、传递信息的渠道==` → `<mark style=\"background-color: #FFF3A3A6;\">主动与用户建立连接、传递信息的渠道</mark>`\n7. `==工具设计的质量直接决定了 Agent 能走多远==` → `<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>`\n8. `==**工具调用**（Tool Calling，也称 Function Calling）==` → `<mark style=\"background-color: #FFF3A3A6;\">**工具调用**（Tool Calling，也称 Function Calling）</mark>`\n9. `==\"工具调用\"==` → `<mark style=\"background-color: #FFF3A3A6;\">\"工具调用\"</mark>`\n10. `==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==` → mark...\n11. `==通用工具并不总是优于专用工具==` → mark...\n12. `==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==` → mark...\n13. `==LLM Agent 的一个独特能力是**内部思考**==` → mark...\n14. `==不改变外部环境==` → mark...\n15. `==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==` → mark...\n16. `==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==` → mark...\n17. `==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==` → mark...\n18. `==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==` → mark...\n19. `==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==` → mark...\n20. `==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==` → mark...\n21. `==对模型与外围 Harness 进行协同优化，持续迭代。==` → mark...\n\nAll are unique substrings (verified by scanning the file). I'll fire all 21 Edit calls in one message."
+        },
+        {
+          "type": "text",
+          "text": "确认了。现在把全部 21 处 `==高亮==` 批量替换为 `<mark style=\"background-color: #FFF3A3A6;\">`："
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:28.895Z"
+    },
+    {
+      "id": "1122497e-679a-4f5c-9ea2-9ebb1ea2cefb",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_qCoTG4GJplmMhLcxxGUx6441",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**执行工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">改变世界</mark>：代码执行、文件操作、系统命令、外部 API 调用——决策由此变成实际行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n==**事件触发工具**==与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是==作为外部输入来驱动 Agent 开始执行任务==。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**执行工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">改变世界</mark>：代码执行、文件操作、系统命令、外部 API 调用——决策由此变成实际行动。\n\n==**协作工具**让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n==**事件触发工具**==与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是==作为外部输入来驱动 Agent 开始执行任务==。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 60
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==**协作工具**让 Agent ==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:34.053Z"
+    },
+    {
+      "id": "2e289f73-7a7c-4d14-af17-6bc5e7b83e8e",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_01_NVRs9JHfAKCsgLGq3ZJw4433",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "failed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>",
+              "oldText": "==与其他 Agent 分工合作=="
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md"
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==与其他 Agent 分工合作==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:34.465Z"
+    },
+    {
+      "id": "3df73e7e-3b14-41a4-8780-72ef92829fe3",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_02_RkGXqMfw7ayI6UMaX0ma1746",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是==作为外部输入来驱动 Agent 开始执行任务==。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n==**事件触发工具**==与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是==作为外部输入来驱动 Agent 开始执行任务==。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 62
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==**事件触发工具**==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:34.871Z"
+    },
+    {
+      "id": "10fefd3b-0263-4411-8fda-51112e74a2ea",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_03_aC2GvnzMtpHgS5YMSBTt4235",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是==作为外部输入来驱动 Agent 开始执行任务==。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 62
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==作为外部输入来驱动 Agent 开始执行任务==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:35.259Z"
+    },
+    {
+      "id": "b73f5a21-9bc6-4a5f-a29a-f02a2b5a86f9",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_04_nj82zQhEbfEddBalyCLa1024",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。==工具设计的质量直接决定了 Agent 能走多远==——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。==工具设计的质量直接决定了 Agent 能走多远==——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 64
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==**用户沟通工具**==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:35.691Z"
+    },
+    {
+      "id": "81b0eb0a-4cb5-42cb-b02c-b91fd88165b1",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_05_i5Q8BGU0BvCGLKalvCQ26766",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>是 Agent <mark style=\"background-color: #FFF3A3A6;\">主动与用户建立连接、传递信息的渠道</mark>。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。==工具设计的质量直接决定了 Agent 能走多远==——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n\n<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>是 Agent ==主动与用户建立连接、传递信息的渠道==。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。==工具设计的质量直接决定了 Agent 能走多远==——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 64
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==主动与用户建立连接、传递信息的渠道==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">主动与用户建立连接、传递信息的渠道</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:36.077Z"
+    },
+    {
+      "id": "a99f8765-694f-43f5-b024-967450cb0e3a",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_06_t4qaJDtjzETokYg1R4Az2630",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>是 Agent <mark style=\"background-color: #FFF3A3A6;\">主动与用户建立连接、传递信息的渠道</mark>。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n==**工具调用**（Tool Calling，也称 Function Calling）==是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用==“工具调用”==这一术语。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**用户沟通工具**</mark>是 Agent <mark style=\"background-color: #FFF3A3A6;\">主动与用户建立连接、传递信息的渠道</mark>。与执行工具改变外部世界不同，用户沟通工具专注于信息的传递和交互——通过文字消息、语音通话、邮件等方式，将 Agent 的执行进展或主动关怀传达给用户。\n\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。==工具设计的质量直接决定了 Agent 能走多远==——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n==**工具调用**（Tool Calling，也称 Function Calling）==是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用==“工具调用”==这一术语。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 66
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==工具设计的质量直接决定了 Agent 能走多远==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:36.507Z"
+    },
+    {
+      "id": "6126382e-f8c7-4c4c-9e03-65117a734ec0",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_07_li9ar5NYNN7cMjmpHKjI8251",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n<mark style=\"background-color: #FFF3A3A6;\">**工具调用**（Tool Calling，也称 Function Calling）</mark>是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用==“工具调用”==这一术语。\n\n工具调用的流程分为四步：首先，在上下文里告诉模型有哪些工具可用（包括名称、用途和参数）；然后，模型自主判断要不要调用工具、调用哪个、传什么参数；接着，工具执行完毕后，结果被追加到上下文中；最后，模型据此决定下一步行动。这个循环就是后文要介绍的 ReAct 的基础。\n",
+              "oldText": "\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n==**工具调用**（Tool Calling，也称 Function Calling）==是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用==“工具调用”==这一术语。\n\n工具调用的流程分为四步：首先，在上下文里告诉模型有哪些工具可用（包括名称、用途和参数）；然后，模型自主判断要不要调用工具、调用哪个、传什么参数；接着，工具执行完毕后，结果被追加到上下文中；最后，模型据此决定下一步行动。这个循环就是后文要介绍的 ReAct 的基础。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 68
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==**工具调用**（Tool Calling，也称 Function Calling）==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">**工具调用**（Tool Calling，也称 Function Calling）</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:36.931Z"
+    },
+    {
+      "id": "675280db-4363-453c-ba3d-af66c8be49e4",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_08_YSuXHhkf80yMX6VJDwoF4840",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n<mark style=\"background-color: #FFF3A3A6;\">**工具调用**（Tool Calling，也称 Function Calling）</mark>是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用<mark style=\"background-color: #FFF3A3A6;\">“工具调用”</mark>这一术语。\n\n工具调用的流程分为四步：首先，在上下文里告诉模型有哪些工具可用（包括名称、用途和参数）；然后，模型自主判断要不要调用工具、调用哪个、传什么参数；接着，工具执行完毕后，结果被追加到上下文中；最后，模型据此决定下一步行动。这个循环就是后文要介绍的 ReAct 的基础。\n",
+              "oldText": "\n以上五类工具的完整分类体系和设计原则将在第四章[[chapter4]]展开讨论。<mark style=\"background-color: #FFF3A3A6;\">工具设计的质量直接决定了 Agent 能走多远</mark>——接口定义不清晰，模型就会乱用工具；错误处理不到位，工具一旦失败就会变成 Agent 的死锁；权限控制太宽泛，Agent 一旦出错，后果就难以挽回。MCP（Model Context Protocol，模型上下文协议）标准的推广，正在让工具接入变得更容易。\n\n<mark style=\"background-color: #FFF3A3A6;\">**工具调用**（Tool Calling，也称 Function Calling）</mark>是现代 LLM Agent 的一项核心能力，它让模型能够通过结构化的方式调用外部工具。这种能力将 LLM 从一个纯粹的文本生成器转变为能够执行实际操作的智能系统。本书后续统一使用==“工具调用”==这一术语。\n\n工具调用的流程分为四步：首先，在上下文里告诉模型有哪些工具可用（包括名称、用途和参数）；然后，模型自主判断要不要调用工具、调用哪个、传什么参数；接着，工具执行完毕后，结果被追加到上下文中；最后，模型据此决定下一步行动。这个循环就是后文要介绍的 ReAct 的基础。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 68
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==“工具调用”==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">“工具调用”</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:37.362Z"
+    },
+    {
+      "id": "22c72652-6076-455e-a99e-2972befa804a",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_09_RqwZIWgZXGs095vruc7g1736",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n开发者只需要定义工具和执行工具调用，模型自主完成“要不要调用、调哪个、传什么参数”的决策。第二章将详细展开这个 API 结构。\n\n在为 Agent 设计工具时，可以<mark style=\"background-color: #FFF3A3A6;\">先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展</mark>。如果任务只是做四则运算，一个参数清晰的计算器就足够了；当任务升级为读取表格、清洗缺失值、计算统计量并绘图时，受限的 Python 代码解释器就比不断叠加专用工具更容易组合和探索。但通用性也扩大了出错和攻击面：代码必须在隔离沙盒中运行，默认不能访问网络，也不能读取授权工作目录以外的文件，并对执行时间、CPU、内存和输出大小设置上限。\n\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n",
+              "oldText": "\n开发者只需要定义工具和执行工具调用，模型自主完成“要不要调用、调哪个、传什么参数”的决策。第二章将详细展开这个 API 结构。\n\n在为 Agent 设计工具时，可以==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==。如果任务只是做四则运算，一个参数清晰的计算器就足够了；当任务升级为读取表格、清洗缺失值、计算统计量并绘图时，受限的 Python 代码解释器就比不断叠加专用工具更容易组合和探索。但通用性也扩大了出错和攻击面：代码必须在隔离沙盒中运行，默认不能访问网络，也不能读取授权工作目录以外的文件，并对执行时间、CPU、内存和输出大小设置上限。\n\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 92
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">先从任务所需的最窄能力起步，再随任务复杂度提升逐步扩展</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:37.798Z"
+    },
+    {
+      "id": "efa405e1-c369-4e3f-a38b-1a9d9924af44",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_10_1zaKIZPHublFY4tDyGuY6530",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n\n<mark style=\"background-color: #FFF3A3A6;\">通用工具并不总是优于专用工具</mark>。支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，仍应封装为参数明确、权限受限且全程可审计的专用工具，必要时再加上预览和人工确认。因此，==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==。\n\n### LLM：Agent 的大脑\n",
+              "oldText": "\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n\n==通用工具并不总是优于专用工具==。支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，仍应封装为参数明确、权限受限且全程可审计的专用工具，必要时再加上预览和人工确认。因此，==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==。\n\n### LLM：Agent 的大脑\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 96
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==通用工具并不总是优于专用工具==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">通用工具并不总是优于专用工具</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:38.307Z"
+    },
+    {
+      "id": "4551b18e-1fa4-4b2f-b77e-74739c4c7aa9",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_11_BrbeLVx53cMAy3FGZOGt3884",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n\n<mark style=\"background-color: #FFF3A3A6;\">通用工具并不总是优于专用工具</mark>。支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，仍应封装为参数明确、权限受限且全程可审计的专用工具，必要时再加上预览和人工确认。因此，<mark style=\"background-color: #FFF3A3A6;\">工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**</mark>。\n\n### LLM：Agent 的大脑\n",
+              "oldText": "\n同样，单一日志工具适合记录一段执行过程；对于需要数小时甚至数天的长程任务，受控的虚拟工作目录则可以同时保存计划、中间结果、运行日志和最终产物，让 Agent 能在多次执行之间接续工作。这个目录也应限定可读写的路径、容量和文件类型，并防止路径越界，而不是把宿主文件系统全部暴露给 Agent。\n\n<mark style=\"background-color: #FFF3A3A6;\">通用工具并不总是优于专用工具</mark>。支付、删除数据、发送邮件和生产部署等高风险或强业务约束操作，仍应封装为参数明确、权限受限且全程可审计的专用工具，必要时再加上预览和人工确认。因此，==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==。\n\n### LLM：Agent 的大脑\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 96
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">工具设计的核心原则是：**通用基础能力用于组合与探索；专用工具用于约束高风险和强业务规则操作**</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:38.713Z"
+    },
+    {
+      "id": "034d7a5e-9be1-49aa-926a-812823aaa55c",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_12_xpoI0QLmxJllvqhgKg0r9084",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程==不改变外部环境==，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n",
+              "oldText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n==LLM Agent 的一个独特能力是**内部思考**==——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程==不改变外部环境==，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 102
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==LLM Agent 的一个独特能力是**内部思考**==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:39.301Z"
+    },
+    {
+      "id": "9693e27c-152c-4548-aaa4-50497bb710a0",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_13_a81VioD0Th92XT93XCRz3655",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程<mark style=\"background-color: #FFF3A3A6;\">不改变外部环境</mark>，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n",
+              "oldText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程==不改变外部环境==，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 102
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==不改变外部环境==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">不改变外部环境</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:39.785Z"
+    },
+    {
+      "id": "64d0de3f-b7c3-46e0-8718-35a6c1b77a87",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_14_ghhrYWtDmVDbBUE9R4eS2278",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程<mark style=\"background-color: #FFF3A3A6;\">不改变外部环境</mark>，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于<mark style=\"background-color: #FFF3A3A6;\">预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）</mark>阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n",
+              "oldText": "\n大语言模型（Large Language Model, LLM）是 Agent 的决策核心。收到用户的请求后，它需要先解析真实意图（用户说的往往不是他真正想要的），再将模糊或复杂的任务拆解成可执行的步骤。执行过程中它还要持续做出判断：下一步该做什么、要不要调用工具、调哪个工具、传什么参数。这种 “理解-规划-执行” 的能力来自预训练所积累的知识，是工作流和自主 Agent 都依赖的基础。\n\n<mark style=\"background-color: #FFF3A3A6;\">LLM Agent 的一个独特能力是**内部思考**</mark>——在采取实际行动之前，Agent 可以先进行规划与推演。这一过程<mark style=\"background-color: #FFF3A3A6;\">不改变外部环境</mark>，却能显著提升后续行动的质量。LLM 之所以能够进行有效的内部推演，得益于==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==阶段习得的能力——模型在推演时所遵循的是人类知识中已经沉淀下来的逻辑规则，包括数学定律、因果关系、问题分解策略等。因此与传统强化学习 Agent 不同，今天基于 LLM 的 Agent 不是盲目的随机探索，而是在结构化的知识体系上展开。\n\n#### 模型即 Agent：当模型本身成为产品\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 102
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">预训练（Pre-training，即在海量互联网文本上进行初始训练，让模型学会语言规律和世界知识）</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:40.168Z"
+    },
+    {
+      "id": "c2e23933-5b81-458e-b46b-019f702b6fb6",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_15_VPQILpeWqrE2eVzo4J5G7610",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==换到 Agent 语境里，==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n",
+              "oldText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==换到 Agent 语境里，==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 106
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:40.791Z"
+    },
+    {
+      "id": "0208f47f-c01b-4b91-b590-1984bc7bf3ec",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_16_CzE7NGlVwKr3RYtZhuSC4948",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n",
+              "oldText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==换到 Agent 语境里，==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 106
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:41.567Z"
+    },
+    {
+      "id": "925374c4-023c-42dd-8c59-1c306147c00d",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_17_V7jB0q63uMrJYk40MmsG8377",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n",
+              "oldText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 106
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:42.040Z"
+    },
+    {
+      "id": "fbbde3b3-0170-4c05-b5a5-e02bf147db79",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_18_6pQX4tXetN5YYD2VcvWX0259",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n",
+              "oldText": "\n#### 模型即 Agent：当模型本身成为产品\n\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 106
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:42.615Z"
+    },
+    {
+      "id": "091a0205-911c-474f-b5cd-57e8560b3621",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_19_bNKsGjizaIn79JTAoHwH8349",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>\n\n<mark style=\"background-color: #FFF3A3A6;\">模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。</mark>模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n\n但这里悬着一个更深的问题：如果模型持续变强，今天这些 Harness 会不会最终被模型“吃掉”？Rich Sutton 在《苦涩的教训》（The Bitter Lesson）中回顾了 AI 研究七十年间反复上演的一幕[^ch1-1]：研究者一次次把自己对领域的理解编码进系统，短期见效，长期却总是输给能随算力与数据规模持续扩展的通用方法——搜索与学习。以此衡量，Harness 里的约束、验证与纠正，有多少属于“人的先验”，注定会被模型内化？本书的立场是：**方向认同，节奏务实**。方向上，本书不怀疑模型会持续吃掉 Harness——工具调用、长程规划都曾靠外部编排，如今已是模型的原生能力；<mark style=\"background-color: #FF5582A6;\">但在节奏上，这个“吃”远比直觉慢(疑似AI)</mark>：训练以月计，模型也无法一次内化真实业务中所有的约束与偏好，模型此刻的能力边界，就是 Harness 此刻的价值所在。因此 Harness 工程不是对苦涩的教训的抵抗，而是这一教训在工程时间尺度上的实践：模型还做不稳的，Harness 先补上；模型每内化一层，Harness 就卸下一层，转而兜底新的能力前沿。\n",
+              "oldText": "\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>\n\n==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n\n但这里悬着一个更深的问题：如果模型持续变强，今天这些 Harness 会不会最终被模型“吃掉”？Rich Sutton 在《苦涩的教训》（The Bitter Lesson）中回顾了 AI 研究七十年间反复上演的一幕[^ch1-1]：研究者一次次把自己对领域的理解编码进系统，短期见效，长期却总是输给能随算力与数据规模持续扩展的通用方法——搜索与学习。以此衡量，Harness 里的约束、验证与纠正，有多少属于“人的先验”，注定会被模型内化？本书的立场是：**方向认同，节奏务实**。方向上，本书不怀疑模型会持续吃掉 Harness——工具调用、长程规划都曾靠外部编排，如今已是模型的原生能力；<mark style=\"background-color: #FF5582A6;\">但在节奏上，这个“吃”远比直觉慢(疑似AI)</mark>：训练以月计，模型也无法一次内化真实业务中所有的约束与偏好，模型此刻的能力边界，就是 Harness 此刻的价值所在。因此 Harness 工程不是对苦涩的教训的抵抗，而是这一教训在工程时间尺度上的实践：模型还做不稳的，Harness 先补上；模型每内化一层，Harness 就卸下一层，转而兜底新的能力前沿。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 108
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。</mark>"
+          }
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:43.154Z"
+    },
+    {
+      "id": "c26682cc-de7f-43e1-8abc-fd8df21a4d82",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_20_g6I2IlNXAW5mkKZjmiH28897",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>\n\n<mark style=\"background-color: #FFF3A3A6;\">模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。</mark>模型厂商的真正优势不是 “让框架变薄”，而是能<mark style=\"background-color: #FFF3A3A6;\">对模型与外围 Harness 进行协同优化，持续迭代。</mark>\n\n但这里悬着一个更深的问题：如果模型持续变强，今天这些 Harness 会不会最终被模型“吃掉”？Rich Sutton 在《苦涩的教训》（The Bitter Lesson）中回顾了 AI 研究七十年间反复上演的一幕[^ch1-1]：研究者一次次把自己对领域的理解编码进系统，短期见效，长期却总是输给能随算力与数据规模持续扩展的通用方法——搜索与学习。以此衡量，Harness 里的约束、验证与纠正，有多少属于“人的先验”，注定会被模型内化？本书的立场是：**方向认同，节奏务实**。方向上，本书不怀疑模型会持续吃掉 Harness——工具调用、长程规划都曾靠外部编排，如今已是模型的原生能力；<mark style=\"background-color: #FF5582A6;\">但在节奏上，这个“吃”远比直觉慢(疑似AI)</mark>：训练以月计，模型也无法一次内化真实业务中所有的约束与偏好，模型此刻的能力边界，就是 Harness 此刻的价值所在。因此 Harness 工程不是对苦涩的教训的抵抗，而是这一教训在工程时间尺度上的实践：模型还做不稳的，Harness 先补上；模型每内化一层，Harness 就卸下一层，转而兜底新的能力前沿。\n",
+              "oldText": "\n“模型即 Agent”（Model as Agent）这一新范式代表了 AI Agent 发展的最新方向。<mark style=\"background-color: #FFF3A3A6;\">先进模型通过后训练（特别是强化学习）将工具调用能力内化为原生能力：何时调用工具、调哪个、传什么参数，都由模型自己决定，无需人工编排。但这并不意味着框架层变得不重要了</mark>。恰恰相反，模型越强大，围绕模型构建的 Harness 就越关键。Harness 这个词原指马具，即套在马身上的缰绳与挽具，<mark style=\"background-color: #FFF3A3A6;\">不是为了限制马的奔跑能力，而是把这种力量引导到正确的方向上。</mark>换到 Agent 语境里，<mark style=\"background-color: #FFF3A3A6;\">模型是那匹强大但不可预测的马，Harness 则是把它的能力引导成可靠任务执行的工程外壳</mark>。在 Agent 中，Harness 包括<mark style=\"background-color: #FFF3A3A6;\">上下文管理、工具接口、安全约束、验证与纠正等基础设施（详见本章末节）。</mark>\n\n<mark style=\"background-color: #FFF3A3A6;\">模型自主决策的空间越大，出错时的影响面也越大，因此需要更精细的约束、验证和纠正机制来确保可靠性。</mark>模型厂商的真正优势不是 “让框架变薄”，而是能==对模型与外围 Harness 进行协同优化，持续迭代。==\n\n但这里悬着一个更深的问题：如果模型持续变强，今天这些 Harness 会不会最终被模型“吃掉”？Rich Sutton 在《苦涩的教训》（The Bitter Lesson）中回顾了 AI 研究七十年间反复上演的一幕[^ch1-1]：研究者一次次把自己对领域的理解编码进系统，短期见效，长期却总是输给能随算力与数据规模持续扩展的通用方法——搜索与学习。以此衡量，Harness 里的约束、验证与纠正，有多少属于“人的先验”，注定会被模型内化？本书的立场是：**方向认同，节奏务实**。方向上，本书不怀疑模型会持续吃掉 Harness——工具调用、长程规划都曾靠外部编排，如今已是模型的原生能力；<mark style=\"background-color: #FF5582A6;\">但在节奏上，这个“吃”远比直觉慢(疑似AI)</mark>：训练以月计，模型也无法一次内化真实业务中所有的约束与偏好，模型此刻的能力边界，就是 Harness 此刻的价值所在。因此 Harness 工程不是对苦涩的教训的抵抗，而是这一教训在工程时间尺度上的实践：模型还做不稳的，Harness 先补上；模型每内化一层，Harness 就卸下一层，转而兜底新的能力前沿。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 108
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "==对模型与外围 Harness 进行协同优化，持续迭代。==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">对模型与外围 Harness 进行协同优化，持续迭代。</mark>"
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "20 of 21 edits succeeded. One failed: `==与其他 Agent 分工合作==` was not found. Interesting — the first edit on line 63 `==**协作工具**让 Agent ==` succeeded, which removed the first `==...==` pair on that line. But the second `==与其他 Agent 分工合作==` failed to match.\n\nWait — why would it fail? The original line 63 was:\n`==**协作工具**让 Agent ==与其他 Agent 分工合作==：委托子 Agent...`\n\nAfter edit 1, it became:\n`<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent...`\n\nSo `==与其他 Agent 分工合作==` should still exist. Hmm, unless... maybe the file contains something slightly different, like a full-width character or different spacing. Perhaps it's `==与其他 Agent 分工合作==` but with a different character that looks similar. Or maybe the Read display earlier differed: the original Read output showed `==**协作工具让 Agent ==与其他 Agent 分工合作==` (without the closing `**`). That suggests the actual text might have been `==**协作工具**让 Agent ==与其他 Agent 分工合作==`... but grep showed `==**协作工具**让 Agent ==与其他 Agent 分工合作==` and the re-read confirmed `==**协作工具**让 Agent ==与其他 Agent 分工合作==`.\n\nHmm wait, actually maybe the second `==` pairing is different. Let me think about the structure: `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — with three `==` sequences. The string `==与其他 Agent 分工合作==` — after my edit removed the first `==`... no wait, my edit only replaced `==**协作工具**让 Agent ==`, leaving `与其他 Agent 分工合作==`. The old_string `==与其他 Agent 分工合作==` should match the remaining text.\n\nUnless the actual character between \"Agent\" and \"分工合作\" isn't a regular space. Maybe it's a full-width space (U+3000) or something. The failed edit says the string wasn't found. Possibly the text has a different whitespace character.\n\nLet me just grep for the current state of line 63 and see what's there now."
+        },
+        {
+          "type": "text",
+          "text": "20 处已替换成功，但 `==与其他 Agent 分工合作==` 这一处匹配失败，可能字符有细微差异。我检查一下当前文件状态："
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:43.760Z"
+    },
+    {
+      "id": "613f68fa-7b78-4f72-897b-89d3626292cf",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_4DHWPgUtps0QgtxduFZt3972",
+          "title": "grep -n \"分工合作\" D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "search",
+          "content": [],
+          "rawInput": {
+            "-n": true,
+            "output_mode": "content",
+            "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "pattern": "分工合作"
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "Interesting! Now the line shows:\n`<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent...`\n\nSo the remaining `==` is at the END — i.e. `与其他 Agent 分工合作==`. The `==` at the beginning of \"与其他 Agent 分工合作\" — wait. Let me parse the original: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`.\n\nBreaking it: `==` `**协作工具**让 Agent ` `==` `与其他 Agent 分工合作` `==`\n\nSo highlight 1 = `**协作工具**让 Agent `, highlight 2 = `与其他 Agent 分工合作`. My edit 1 replaced `==**协作工具**让 Agent ==` → mark. Remaining: `与其他 Agent 分工合作==`.\n\nBut my edit 2 old_string was `==与其他 Agent 分工合作==` — the full string with leading `==`. Since the leading `==` was already consumed by edit 1 (it was the closing `==` of highlight 1), the remaining text is just `与其他 Agent 分工合作==` without the leading `==`.\n\nWait no. Original: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`\n\nThe structure is: open `==`, content `**协作工具**让 Agent `, close `==`, then `与其他 Agent 分工合作`, close `==`... but that leaves an unmatched opening `==`!? \n\nHmm, actually wait. If the structure is `==内容1==内容2==`, that's ambiguous. Let me count the `==` markers: there are 3 `==` sequences on line 63: at start, after \"让 Agent \", and at end. \n\nMy edit 1 old_string: `==**协作工具**让 Agent ==` — that consumed the first two `==` sequences, treating highlight 1 as `**协作工具**让 Agent `.\n\nRemaining: `与其他 Agent 分工合作==` — this is content followed by one `==`. So it's an unmatched closing `==`! The text was apparently `==A==B==` where the original intent was probably `==A==` highlight and `==B==`... no wait.\n\nHmm, actually maybe the original intended structure was: `==**协作工具**让 Agent ==` — hmm, that highlight seems broken anyway (missing closing bold). Actually more likely the original was `**协作工具**` bold + `让 Agent `, then `==与其他 Agent 分工合作==` was the highlight... but then the first `==` would be before `与其他 Agent 分工合作`, i.e. structure `==**协作工具**让 Agent ==与其他 Agent 分工合作==` = `==X ==Y==`... \n\nOK let me think again. Original line 63: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`\n\nSequence of characters: `==` `**协作工具**让 Agent ` `==` `与其他 Agent 分工合作` `==`\n\nIf highlights pair as (1,2) and (3,4)... no, with 3 `==` there's one open marker unpaired. In Obsidian, `==A==B==` renders as highlight(A) then `B==`... actually Obsidian would render `==A==B==` as: highlight \"A\", then literal \"B==\" or maybe highlight from the second `==` to the third `==`? No — Obsidian's parser treats `==` as inline tokens; `==A==B==` = highlight(A) + text(B) + literal `==`? Actually no: Obsidian's inline parser would see `==` open, then `A`, then `==` close → highlight A; then `B`; then `==` unmatched → literal.\n\nHmm, so in Obsidian, the rendering of line 63 would be: highlighted \"**协作工具**让 Agent \" (with broken bold), then plain \"与其他 Agent 分工合作\", then literal \"==\". That seems wrong. More likely the original author intended: highlight `**协作工具**让 Agent` ... no.\n\nAlternatively the intended reading: `==**协作工具**让 Agent ==` is a malformed highlight and `==与其他 Agent 分工合作==` is a proper highlight. But in the actual file, between \"让 Agent \" and \"与其他\" there's only ONE `==`? No wait — the grep output shows: `<mark ...>**协作工具**让 Agent </mark>与其他 Agent 分工合作==`\n\nAfter edit 1, remaining text is `与其他 Agent 分工合作==`. So the original had: `==` + `**协作工具**让 Agent ` + `==` + `与其他 Agent 分工合作` + `==`. Three `==` markers total.\n\nSo pairing (1st==, 2nd==) = highlight `**协作工具**让 Agent `; 3rd `==` is unmatched/opening... The text `与其他 Agent 分工合作==` — the trailing `==` could be a dangling opening that pairs with... nothing. OR the intended pairing was (1st==, 3rd==) = highlight `**协作工具**让 Agent ==与其他 Agent 分工合作`, with the 2nd `==` literal. Hmm.\n\nGiven the sentence structure \"**协作工具**让 Agent 与其他 Agent 分工合作\" — reading the intended meaning: \"协作工具让 Agent 与其他 Agent 分工合作\". The natural reading: highlight should cover \"与其他 Agent 分工合作\" (that's a meaningful highlight phrase). And `**协作工具**` should be bold (properly closed in grep output: `**协作工具**`).\n\nWait — the grep for the ORIGINAL file showed `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — with `**协作工具**` properly closed. So the original intent was probably:\n\n`**协作工具**` (bold, not highlighted) `让 Agent ` `==与其他 Agent 分工合作==` (highlight)\n\nBut there was a stray `==` before `**协作工具**`. So original text: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`... Hmm, that means: `==` + `**协作工具**让 Agent ` + `==` + `与其他 Agent 分工合作` + `==`.\n\nIf Obsidian pairs (1,2) and (3,4): highlight1 = `**协作工具**让 Agent `, then `与其他 Agent 分工合作` — wait (3,4) would be the 3rd and 4th `==`... but there are only 3. Ugh.\n\nHmm wait, let me recount. Maybe there are actually 4 `==` sequences... Let me count from the grep output of the current file: `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==`\n\nCurrent file has ONE `==` left (trailing). Original had: `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — let me count: `==` (1), `**协作工具**让 Agent `, `==` (2), `与其他 Agent 分工合作`, `==` (3). Three markers.\n\nWith 3 `==` markers: Obsidian renders highlight between marker 1 and 2, then literal `==` at end? Or is it marker 2 and 3 paired, with marker 1 dangling?\n\nObsidian's markdown parser (it's based on CodeMirror / remark): for `==A==B==`, I believe it renders `<mark>A</mark>B==` — pairing left-to-right greedily. So original rendered: highlight(`**协作工具**让 Agent `) + plain(`与其他 Agent 分工合作`) + literal `==`.\n\nBut that's weird for the author's intent. The author probably wanted: `**协作工具**` bold + `让 Agent ` + highlight(`与其他 Agent 分工合作`) — i.e., the intended original was `**协作工具**让 Agent ==与其他 Agent 分工合作==` and there's an extra stray `==` at the beginning. OR the author wanted `==**协作工具**让 Agent 与其他 Agent 分工合作==` as one big highlight and the middle `==` is stray.\n\nHmm. Either way, this is ambiguous. The user asked: \"把==高亮的部分全都换成<mark style=\"background-color: #FFF3A3A6;\">\" — replace highlighted parts with mark tags.\n\nNow the file currently has: `<mark ...>**协作工具**让 Agent </mark>与其他 Agent 分工合作==` — one dangling `==`.\n\nWhat should I do with the remaining `==`? Options:\n1. Leave it — dangling `==` in Obsidian renders as literal \"==\". That's ugly.\n2. Interpret the author's intent: the highlight was meant to be \"与其他 Agent 分工合作\" (since that phrase pattern matches other highlights like \"与其他 Agent 分工合作\" — actually similar phrasing appears in other lines as highlights). So convert: `与其他 Agent 分工合作==` → `与其他 Agent 分工合作` + ... hmm but then there's still the issue.\n\nWait, actually, let me reconsider. Maybe the original text was: `==**协作工具**让 Agent ==` was NOT the intended highlight. Looking at the grep output of the ORIGINAL file line 63:\n\n`==**协作工具**让 Agent ==与其他 Agent 分工合作==：委托子 Agent 完成专项任务`\n\nHmm, what if the original intended structure was: `==` ... `==与其他 Agent 分工合作==` where the FIRST `==` pairs with the LAST `==`? That would make highlight = `**协作工具**让 Agent ==与其他 Agent 分工合作`. And the middle `==` is literal. In Obsidian, that's not how it renders though (left-to-right greedy).\n\nOK here's the thing — I'm overthinking the rendering. My job: faithfully convert the highlights. My edit 1 already consumed markers 1&2, producing `<mark>**协作工具**让 Agent </mark>`. Now there's a dangling `==` at the end of \"分工合作\".\n\nGiven the sentence: \"**协作工具**让 Agent 与其他 Agent 分工合作：委托子 Agent 完成专项任务\" — the semantic highlight the author likely wanted was \"与其他 Agent 分工合作\". So the correct final form should be:\n\n`**协作工具**让 Agent <mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>：委托子 Agent...`\n\nThat means my edit 1 was wrong in pairing! I paired `==`(1) with `==`(2), creating highlight `**协作工具**让 Agent ` — but the author intended `==`(2) with `==`(3): highlight `与其他 Agent 分工合作`, with `==`(1) being stray (probably leftover from `==**协作工具**==` originally).\n\nHmm wait — but actually, was the original `**协作工具**`? The very first Read of the file showed line 63 as: `==**协作工具让 Agent ==与其他 Agent 分工合作==` — WITHOUT the closing `**`! Then the re-Read (offset 62) showed `==**协作工具**让 Agent ==与其他 Agent 分工合作==` — WITH it. Confusing. Grep also showed WITH. \n\nHmm, the difference between the two Read results... The first Read output may have just been my misreading. The Grep and second Read agree: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`.\n\nSo current state after edit 1: `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==`\n\nHmm OK so now, what's the best fix? The remaining `==` at the end. The most sensible interpretation:\n\nOriginal author intent: `**协作工具**` bold + `让 Agent ` plain + `==与其他 Agent 分工合作==` highlight. The stray `==` at the very beginning was accidental (probably leftover from editing). \n\nBut hold on — maybe not! Maybe the author intended `==**协作工具**让 Agent ==` as highlight and the LAST `==` pairs with nothing. Can't know for sure.\n\nActually, wait. Let me reconsider the pairing: `==**协作工具**让 Agent ==与其他 Agent 分工合作==`. In Obsidian this renders as: mark(`**协作工具**让 Agent `) then \"与其他 Agent 分工合作\" then \"==\". The user saw this in Obsidian and wants highlights converted. The user's ask is mechanical: replace `==...==` with mark tags. For this line, the mechanical left-to-right conversion is exactly what I did in edit 1 — highlight 1 = `**协作工具**让 Agent `. The trailing `==` is unmatched garbage that Obsidian renders literally as \"==\".\n\nHmm, but wait — did Obsidian actually render it that way? If Obsidian renders `==A==B==` as `<mark>A</mark>B==`, then the user saw \"**协作工具**让 Agent\" highlighted and \"与其他 Agent 分工合作==\" plain (with literal == at the end). When the user asked to convert all highlights, they'd expect only the A part highlighted... and the stray `==` maybe should stay as-is or be cleaned?\n\nAlternatively Obsidian might render `==A==B==` as `<mark>A</mark><mark>B</mark>`? No — that requires 4 markers.\n\nHmm, actually, hmm. Some parsers treat `==` as delimiters that can't nest, and `==A==B==`... Let me think about how the Obsidian parser (markdown-it with a highlight plugin or the default) handles it. Obsidian's default markdown is CommonMark-based with the `==` highlight extension. Typically: `==A==B==` → `<mark>A</mark>B==`. \n\nOK. Decision: The user asked to convert highlighted parts. The dangling `==` is not a highlight (unpaired). But leaving literal `==` in the text is almost certainly not what the user wants — they're converting to HTML marks precisely to control styling. The text \"与其他 Agent 分工合作\" is clearly a highlight target — it matches the pattern of line 67's `==主动与用户建立连接、传递信息的渠道==` (similar structural phrase).\n\nHmm, wait. Actually, maybe I should reconsider: perhaps the original line was `==**协作工具**让 Agent ==与其他 Agent 分工合作==` and the INTENDED highlights were `**协作工具**` — no...\n\nLet me look at sibling lines for the pattern:\n\nLine 65: `==**事件触发工具**==与前三类在调用方式上有本质的区别——...而是==作为外部输入来驱动 Agent 开始执行任务==。`\nLine 67: `==**用户沟通工具**==是 Agent ==主动与用户建立连接、传递信息的渠道==。`\n\nPattern: `==**工具名**==` + description text + `==描述性短语==`. \n\nSo for line 63, following this pattern: `==**协作工具**==` should be the tool name highlight, then \"让 Agent \" plain, then `==与其他 Agent 分工合作==` the descriptive highlight!\n\nSo the original text `==**协作工具**让 Agent ==与其他 Agent 分工合作==` is a corrupted version of `==**协作工具**==让 Agent ==与其他 Agent 分工合作==` — the `==` after `**协作工具**` got lost/moved during editing (someone was mid-conversion to mark tags, like the user is doing now).\n\nGiven this analysis, the correct conversion of line 63:\n- `**协作工具**` → `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**</mark>`\n- `与其他 Agent 分工合作` → `<mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>`\n\ni.e. final: `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>：委托子 Agent 完成专项任务...`\n\nHmm, but wait — am I overstepping? The user said \"把高亮的部分全都换成<mark style=\"background-color: #FFF3A3A6;\">\" — mechanical conversion. My edit 1 already did `==**协作工具**让 Agent ==` → mark. That matched the left-to-right pairing. But now I have evidence (the sibling-line pattern) that the intended highlight was `**协作工具**` alone, and the `==` after \"让 Agent \" was the OPENING of the \"与其他 Agent 分工合作\" highlight.\n\nUgh, but honestly, I can't be 100% sure. Options:\n\nOption A: Keep my edit 1 result (highlight = `**协作工具**让 Agent `), and just remove the dangling `==` at the end? That leaves highlight `**协作工具**让 Agent ` which ends mid-sentence without closing bold — visually weird: \"**协作工具**让 Agent \" highlighted with broken markdown bold.\n\nOption B: Undo edit 1's interpretation: change current `<mark ...>**协作工具**让 Agent </mark>与其他 Agent 分工合作==` to `<mark ...>**协作工具**</mark>让 Agent <mark ...>与其他 Agent 分工合作</mark>`. This matches the sibling pattern and the most likely author intent.\n\nOption B is clearly the right call semantically. The current state has an unmatched `==` and a highlight that spans \"**协作工具**让 Agent \" (with the bold opening but the bold never closes inside the mark — `**协作工具**让 Agent ` has `**协作工具**` properly closed actually! `**协作工具**` — both `**` pairs are there. So the mark contains properly-closed bold \"**协作工具**\" plus \"让 Agent \").\n\nHmm OK so current: `<mark>**协作工具**让 Agent </mark>与其他 Agent 分工合作==`. The mark contains `**协作工具**让 Agent ` (bold renders inside mark: \"协作工具\" bold highlighted, then \"让 Agent \" highlighted plain). Then \"与其他 Agent 分工合作\" plain, then dangling \"==\".\n\nThe author intent per sibling pattern: `**协作工具**` highlighted bold, \"让 Agent \" plain, \"与其他 Agent 分工合作\" highlighted. \n\nI'll go with Option B and explain to the user what I did, since line 63 was malformed (an `==` was misplaced). This is the faithful-to-intent conversion.\n\nActually hold on, let me reconsider once more. What if the author intended: `==**协作工具**让 Agent ==` (highlight: \"**协作工具**让 Agent \") and `==与其他 Agent 分工合作==`... no, there are only 3 `==` markers, can't have two complete pairs.\n\nWhat if author intended one highlight: `==**协作工具**让 Agent ==与其他 Agent 分工合作==` with the first `==` pairing with the last? I.e. highlight = `**协作工具**让 Agent ==与其他 Agent 分工合作` and the middle `==`... no, that's not valid markdown either.\n\nGiven the pattern of lines 65/67, Option B is the best reconstruction. The highlight \"**协作工具**\" + \"与其他 Agent 分工合作\" both get marks, \"让 Agent \" plain. And crucially, the malformed `==` placement gets resolved with no dangling markers.\n\nActually, hmm, one more consideration: maybe simplest and most defensible is to treat it exactly like the sibling lines: `==**协作工具**==` → mark, and the rest → `与其他 Agent 分工合作` highlight. But the current file state has `<mark>**协作工具**让 Agent </mark>与其他 Agent 分工合作==`.\n\nSo the fix edit: \nold: `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==`\nnew: `<mark style=\"background-color: #FFF3A3A6;\">**协作工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>`\n\nThat resolves everything cleanly. And I'll explain this to the user.\n\nAlso — I should double check whether all other `==` are gone from the file. Let me grep for `==` again after this fix."
+        },
+        {
+          "type": "text",
+          "text": "发现原因了：第 63 行的 `==` 是错位的（三个 `==` 不成对）。对照第 65、67 行的同类句式（`==**工具名**==` + 描述 + `==描述短语==`），原意应该是「**协作工具**」和「与其他 Agent 分工合作」两处分别高亮，中间的 `==` 位置写错了。我把它修正为与相邻行一致的格式："
+        }
+      ],
+      "timestamp": "2026-08-07T06:51:49.439Z"
+    },
+    {
+      "id": "bcb40f66-ea45-4318-b020-080c930e17f8",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_UdpHoCSc1GWiHvMtSd992190",
+          "title": "Edit AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "edit",
+          "content": [
+            {
+              "type": "diff",
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "newText": "\n<mark style=\"background-color: #FFF3A3A6;\">**执行工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">改变世界</mark>：代码执行、文件操作、系统命令、外部 API 调用——决策由此变成实际行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n",
+              "oldText": "\n<mark style=\"background-color: #FFF3A3A6;\">**执行工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">改变世界</mark>：代码执行、文件操作、系统命令、外部 API 调用——决策由此变成实际行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==：委托子 Agent 完成专项任务，在关键决策点请求人类确认，或在多 Agent 系统中协调行动。\n\n<mark style=\"background-color: #FFF3A3A6;\">**事件触发工具**</mark>与前三类在调用方式上有本质的区别——它们不是 Agent 主动调用的，而是<mark style=\"background-color: #FFF3A3A6;\">作为外部输入来驱动 Agent 开始执行任务</mark>。比如收到一封新邮件、到了某个预定时间点、或另一个系统发出了 Webhook 回调，这些事件会激活 Agent，让它开始后续的思考和行动。虽然事件触发不是 Agent 主动调用的，但它是 Agent 与外部世界交互的通道之一，因此归入广义的工具体系。\n"
+            }
+          ],
+          "locations": [
+            {
+              "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+              "line": 60
+            }
+          ],
+          "rawInput": {
+            "replace_all": false,
+            "file_path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "old_string": "<mark style=\"background-color: #FFF3A3A6;\">**协作工具**让 Agent </mark>与其他 Agent 分工合作==",
+            "new_string": "<mark style=\"background-color: #FFF3A3A6;\">**协作工具**</mark>让 Agent <mark style=\"background-color: #FFF3A3A6;\">与其他 Agent 分工合作</mark>"
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "Now let me verify there are no remaining `==` markers in the file."
+        },
+        {
+          "type": "text",
+          "text": "最后确认全文已无残留的 `==` 高亮标记："
+        }
+      ],
+      "timestamp": "2026-08-07T06:52:36.559Z"
+    },
+    {
+      "id": "7a0276f2-29eb-486a-97a8-2956a107788e",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_call",
+          "toolCallId": "call_00_4VdSpEx6Qb13lYFgi6Hj3862",
+          "title": "grep -n \"==\" D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+          "status": "completed",
+          "kind": "search",
+          "content": [],
+          "rawInput": {
+            "-n": true,
+            "output_mode": "content",
+            "path": "D:\\obsidian-notes\\AI-Agent\\chapter1.md",
+            "pattern": "=="
+          }
+        },
+        {
+          "type": "agent_thought",
+          "text": "All `==` markers are gone. Let me summarize what was done:\n\n- Converted all 21 `==highlight==` segments to `<mark style=\"background-color: #FFF3A3A6;\">...</mark>` \n- Line 63 had a malformed highlight structure (`==**协作工具**让 Agent ==与其他 Agent 分工合作==` with 3 unmatched markers); per the sibling-line pattern I split it into two marks: `**协作工具**` and `与其他 Agent 分工合作`\n\nDone. Report concisely in Chinese."
+        },
+        {
+          "type": "text",
+          "text": "完成 ✅ `chapter1.md` 中全部 21 处 `==高亮==` 已转换为 `<mark style=\"background-color: #FFF3A3A6;\">…</mark>`：\n\n- **20 处** 标准替换（工具五类、Harness、模型即 Agent、内部思考、预训练等段落）\n- **1 处特殊处理**（第 63 行）：原文 `==**协作工具**让 Agent ==与其他 Agent 分工合作==` 的 `==` 标记是错位的（三个 `==` 不成对）。参照第 65、67 行同类句式（`==**工具名**==` + 描述 + `==描述短语==`），按原意修正为两处独立高亮：`**协作工具**` 和 `与其他 Agent 分工合作`，中间的「让 Agent」保持普通文本\n\n全文已无残留的 `==` 标记，且与文件中原有的 `<mark>` 格式完全一致。"
+        }
+      ],
+      "timestamp": "2026-08-07T06:52:36.559Z"
+    }
+  ],
+  "savedAt": "2026-08-07T06:52:37.366Z"
+}

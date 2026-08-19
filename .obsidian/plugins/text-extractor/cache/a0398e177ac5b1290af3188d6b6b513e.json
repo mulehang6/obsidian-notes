@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-20260730-v2/rendered/dual_round3/10.png","text":"Decoder Structure = Stack of 6 identical layers = Residual connections and layer normalization = Output embeddings offset by one position (auto-regressive property)","libVersion":"0.5.0","langs":"chi_sim+eng"}

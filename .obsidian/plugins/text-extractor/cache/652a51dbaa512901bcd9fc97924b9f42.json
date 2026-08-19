@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-both-20260730-v4/rendered/dual_round3/12.png","text":"Training Hardware & SCheduie = Hardware: 8 NVIDIA P100 GPUs = Base model: = 100,000 training steps = ~12 hours total training time = Big model: = 300,000 training steps = ~3.5 days total training time","libVersion":"0.5.0","langs":"chi_sim+eng"}

@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-20260730-v3/rendered/dual_round2/13.png","text":"Multi-Head Attention = Projects Q, K,V h times with different learned projections = Performs attention in parallel on each projected version = Concatenates outputs and applies final projection","libVersion":"0.5.0","langs":"chi_sim+eng"}

@@ -1,0 +1,1 @@
+{"path":"ai-agent-book/chapter5/paper-to-ppt/validation/runs/exp5-4-real-pdf-20260730-v3/rendered/dual_round2/11.png","text":"Attention Mechanism: Definition Maps a query and key-value pairs to an output: = Query (Q), Keys (K), Values (V) are vectors = Qutput is weighted sum of values = Weights determined by query-key compatibility","libVersion":"0.5.0","langs":"chi_sim+eng"}
