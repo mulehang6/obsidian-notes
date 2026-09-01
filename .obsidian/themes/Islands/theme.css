@@ -431,16 +431,24 @@ body:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-inner {
 }
 
 /* ── 8. Scrollbar — thin thumb, no track ── */
+/* body.mod-macos: beat app.css `.mod-macos { --scrollbar-thumb-bg: gray }`
+   --scrollbar-native-width: Obsidian 1.13 sets `* { scrollbar-width: var(--…) }`.
+   On macOS (esp. “Show scroll bars: Always”) that controls thickness;
+   ::-webkit-scrollbar width alone no longer shrinks the bar. */
 
-body {
+body,
+body.mod-macos {
   --scrollbar-bg: rgba(var(--mono-rgb-100), 0);
   --scrollbar-thumb-bg: rgba(var(--mono-rgb-100), 0.12);
   --scrollbar-active-thumb-bg: rgba(var(--mono-rgb-100), 0.20);
+  --scrollbar-native-width: thin;
+  --scrollbar-width: 6px;
+  --scrollbar-height: 6px;
 }
 
 body:not(.restored-scrollbars) ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 body:not(.restored-scrollbars) ::-webkit-scrollbar-track,
@@ -451,7 +459,7 @@ body:not(.restored-scrollbars) ::-webkit-scrollbar-track-piece {
 body:not(.restored-scrollbars) ::-webkit-scrollbar-thumb {
   background-clip: padding-box;
   border-radius: 20px;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
   background-color: transparent;
 }
 
@@ -528,32 +536,81 @@ img {
 
 /* -- 11. Settings -- */
 
+/* Popout Settings: no titlebar divider (title text stays). */
+body.is-popout-modal.is-frameless .titlebar {
+  border-bottom: none;
+}
+
+/* Sidebar island: floating card with gap on all sides */
 .modal.mod-settings .vertical-tab-header {
-    border-inline-end: none;
-  }
+  border-inline-end: none;
+  background-color: var(--islands-card);
+  border-radius: var(--islands-radius);
+  box-shadow: var(--islands-shadow-l);
+  margin: var(--islands-gap);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left nav scroller only: fade height = padding, so at rest the fade
+   sits in empty padding and only appears once items scroll into it. */
+.modal.mod-settings .vertical-tab-header .vertical-tab-header-group-container {
+  padding-top: var(--islands-gap) !important;
+  padding-bottom: max(var(--size-4-3), var(--islands-gap)) !important;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--islands-gap),
+    #000 calc(100% - var(--islands-gap)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--islands-gap),
+    #000 calc(100% - var(--islands-gap)),
+    transparent
+  );
+}
 
 .modal {
   border: unset;
 }
 
-
 /* Window */
+.modal.mod-settings {
+  background-color: var(--islands-sea);
+}
 
-  .modal.mod-settings {
-    background-color: var(--islands-sea);
-  }
+/* Right content scroller only — same padding=fade trick, sea shows through */
+.modal.mod-settings .vertical-tab-content:not(.setting-page) {
+  padding: var(--islands-gap) !important;
+  background-color: transparent;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--islands-gap),
+    #000 calc(100% - var(--islands-gap)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--islands-gap),
+    #000 calc(100% - var(--islands-gap)),
+    transparent
+  );
+}
 
-/* Right side */
+.modal.mod-settings .setting-group {
+  max-width: none;
+  margin-inline: 0;
+}
 
-  .modal.mod-settings .vertical-tab-content {
-    padding-left: 4px;
-    background-color: transparent;  
-  }
-
-  /* Cards */
-  .setting-group .setting-items {
-    box-shadow: var(--islands-shadow-s);
-  }
+/* Cards */
+.setting-group .setting-items {
+  box-shadow: var(--islands-shadow-s);
+}
 
   /* 12. Community modal */
 
