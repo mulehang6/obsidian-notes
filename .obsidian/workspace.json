@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai-agent-book/chapter2.md",
+                "file": "Kotlin/线程，协程，Dispatcher.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chapter2"
+              "title": "线程，协程，Dispatcher"
             }
           }
         ]
@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f03976f9af996656",
@@ -168,6 +167,35 @@
               "icon": "bot-message-square",
               "title": "New session"
             }
+          },
+          {
+            "id": "faefc092c5fadf55",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "685a9355029a6f7c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Kotlin/线程，协程，Dispatcher.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
           }
         ],
         "currentTab": 3
@@ -193,10 +221,14 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9d8dafed2ce9f179",
+  "active": "28268bc0416ef34e",
   "lastOpenFiles": [
-    "ai-agent-book/notes/第二章.md",
+    "图片/野协程.png",
+    "Java基础/1. 基础1.md",
+    "Kotlin/线程，协程，Dispatcher.md",
+    "Kotlin",
     "ai-agent-book/chapter2.md",
+    "ai-agent-book/notes/第二章.md",
     "skills/grill-me/agents/openai.yaml",
     "skills/grill-me/SKILL.md",
     "skills/grill-me/agents",
@@ -213,7 +245,6 @@
     "skills/jetbrains-jewel/references/dependency-model.md",
     "skills/jetbrains-jewel/references",
     "skills/jetbrains-jewel/agents/openai.yaml",
-    "skills/jetbrains-jewel/agents",
     "skills/jetbrains-jewel/SKILL.md",
     "ai-agent-book/chapter1.md",
     "ai-agent-book-notes/第一章.md",
@@ -237,8 +268,6 @@
     "ai-agent-book/chapter4.md",
     "ai-agent-book/chapter3.md",
     "ai-agent-book/chapter10.md",
-    "ai-agent-book/afterword.md",
-    "ai-agent-book/book/introduction.md",
-    "ai-agent-book/book/reference-answers.md"
+    "ai-agent-book/afterword.md"
   ]
 }
