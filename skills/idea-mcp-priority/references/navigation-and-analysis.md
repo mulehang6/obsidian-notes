@@ -26,9 +26,7 @@ Use these tools for read-only understanding of the active project. Always pass k
 
 **Find and understand a symbol:** `search_symbol` → `read_file` / `get_symbol_info` → `analyze_calls` when caller/callee facts matter.
 
-**Explore unfamiliar code:** `list_directory_tree` → `search_file` or `search_text` → `read_file` → `get_symbol_info` for semantic details.
-
-**Unknown intent, no keyword:** `jbcontext search` (context-search skill) as the semantic bootstrap → switch to IDEA `read_file` on the returned `file:line` → `get_symbol_info` / `analyze_calls` for follow-up analysis. IDEA search tools are exact-match only; do not guess keywords when semantic discovery already located the code.
+**Explore unfamiliar code:** Follow the Code discovery rules in `../SKILL.md`. Start with semantic search when only behavior is known; use IDEA directory, file, text, or symbol tools when a concrete location or identifier is available. Read the relevant result before expanding the search, then use `get_symbol_info` / `analyze_calls` for follow-up analysis.
 
 **Inspect external code:** `search_symbol` with external lookup → `read_file` on the IDE-resolved source/decompiled path. Do not unpack JARs with shell while IDEA can resolve them.
 

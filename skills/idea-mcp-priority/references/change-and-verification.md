@@ -6,21 +6,20 @@ Manual source edits and file creation use your own tools, following user and rep
 | --- | --- | --- |
 | `rename_refactoring` | Renaming a class, method, field, variable, package, or another symbol | Use the IDE-resolved symbol target; never replace identifier text manually. Review the result before continuing. |
 | `reformat_file` | Formatting needs to follow IDEA settings | Reformat only affected files; do not run broad unrelated formatting. |
-| `get_file_problems` | A changed file needs error/warning inspection | Run immediately after each single-file edit and before changing another file; include warnings unless the task requires errors only. Address clear new errors before continuing. |
+| `get_file_problems` | A changed file needs error/warning inspection | Inspect when the file or its interdependent edits are complete; include warnings unless the task requires errors only. Fix issues introduced by the change. |
 | `lint_files` | Several selected files need inspection | Prefer it to repeated single-file checks when the changed set is known. It is not a replacement for a project build. |
 | `build_project` | Compilation/build validation is appropriate | Rebuild affected files when enough; use full rebuild only when necessary. Read returned problems rather than assuming success. |
 | `recognize_ij_module_kind` | You need to identify an IntelliJ-module template kind | Specialist tool for IntelliJ plugin/module work. |
 | `create_ij_module` | The task explicitly asks to create an IntelliJ module | Confirm parent directory and allowed template kind first. Do not use for ordinary source/module additions. |
 | `execute_terminal_command` | A project command is needed and no structured IDEA alternative fits | Follow repository shell restrictions; do not prefer it over structured search, inspection, build, or run tools. |
 
-## Required verification sequence
+## Verification
 
-1. Make the smallest requested patch for one source file.
-2. Immediately run `get_file_problems` for that just-edited file. Do not edit another file until the result is read and each new issue is fixed or explicitly recorded.
-3. Repeat steps 1–2 for every additional source file. Do not wait until a batch patch or a build to read IDE problems: that loses the per-file feedback needed to isolate errors.
-4. Use `lint_files` only after the per-file checks, when a known changed set needs a broader IDE inspection.
-5. Use `build_project` for compilation-sensitive work, scoped to affected files if possible, as cross-file validation.
-6. Report the exact check and whether it succeeded, timed out, or found remaining problems.
+- Complete a source file or a coherent group of interdependent edits before inspecting it. Cross-file changes may temporarily leave unresolved references; complete the intended change before judging those diagnostics.
+- Use `get_file_problems` for one file or `lint_files` for a known changed set. Include errors and warnings; do not require both checks for the same purpose.
+- Fix issues introduced by the change, including duplicate code. Report unrelated existing issues without broadening the task. Recheck after fixes when needed to confirm resolution.
+- Use the affected build or tests when compilation or runtime behavior needs validation beyond IDE inspections. Broaden or repeat checks only when failures or unresolved concerns justify it.
+- Report the checks performed and any remaining limitations. If IDEA inspection is unavailable, use an appropriate fallback and state what could not be checked.
 
 Use the project's own tests/build commands only when no appropriate structured IDEA build/run action exists or repository rules require the command.
 

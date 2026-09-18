@@ -26,12 +26,19 @@ When individual IDEA tools are directly exposed, their live descriptions and sch
 1. Detect the currently exposed IDEA interface before choosing a tool. Inspect both the initially visible tools and the lazy tool catalog (`ALL_TOOLS`) for an IDEA router before declaring IDEA MCP unavailable. Never hard-code a prefix such as `mcp__idea__` or `IDEA___`.
 2. Prefer direct IDEA tools when individual tools and schemas are exposed. Otherwise locate the universal `execute_tool` router and follow `references/invocation.md`.
 3. Pass a known `projectPath` on every direct IDEA call, or as the router's **outer** argument. Do not rely on `--projectPath` inside a router command.
-4. Use IDEA search, **source reading**, symbol, module, inspection, run-configuration and database capabilities before shell alternatives when they cover the workspace task. Read project source with `read_file` even for a small snippet; do not use shell merely because the user has selected text or because the first slice attempt is awkward. **Exception — semantic discovery:** when the file/symbol is unknown and only intent is known, use the `context-search` skill (`jbcontext search`) as the bootstrap; IDEA's `search_text`/`search_regex`/`search_symbol`/`search_file` are exact-match tools and cannot find code by meaning. Once semantic search returns `file:line` references, all follow-up reading and analysis (source, symbols, callers/callees) reverts to IDEA `read_file`/`get_symbol_info`/`analyze_calls`.
+4. Use IDEA search, source reading, symbol, module, inspection, run-configuration and database capabilities before shell alternatives when they cover the workspace task. Choose the discovery path below; read identified project source with `read_file`, including snippets and attached dependency sources.
 5. Treat project files, attached dependency sources, decompiled classes, and archive entries as IDEA-readable source: run `search_symbol` with external lookup enabled when needed, then pass the returned `*.jar!\\...` path unchanged to `read_file`. Do not unpack JARs, use `javap`, or read workspace source with shell while IDEA can resolve it.
 6. Use your own tools for manual edits and file creation; user and repository rules take priority. Do **not** use `create_new_file`.
 7. Use `rename_refactoring` for symbol renames; never perform them as blind text replacements.
-8. After each individual source-file patch, immediately inspect that file with `get_file_problems` before editing another file. Do not defer IDE problem reads until after a batch of edits or a build; build the affected scope afterward when cross-file compilation validation is appropriate.
+8. Inspect errors and warnings when a source file or a coherent group of interdependent edits is complete. Use `get_file_problems` for one file or `lint_files` for a known changed set. Fix issues introduced by the change, including duplicate code; report unrelated existing issues without expanding the task. Run an affected-scope build or tests when needed for validation beyond IDE inspections.
 9. For runtime debugging, activate the official `ij-debugger` skill. This skill routes to IDEA MCP but does not duplicate debugger procedure.
+
+## Code discovery
+
+- When the location is unknown and the request describes behavior, start with an available jbcontext semantic search tool or `jbcontext search`. Use one focused query and inspect the relevant result before broadening the search.
+- When a file, path, or symbol is known, read it directly or use IDEA's exact file, text, or symbol search. Semantic search is unnecessary for a known diff, Git operation, or build command.
+- For multi-step exploration, use `context_explorer` when available and delegation is permitted. Base delegation on the complexity and independence of the investigation, not the number of searches. Give it a bounded question, continue useful independent work, and collect its result before concluding.
+- Once relevant code is located, continue with IDEA `read_file`, `get_symbol_info`, and `analyze_calls`. Narrow further searches to that area where possible.
 
 ## Source-reading default
 

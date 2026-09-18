@@ -32,14 +32,14 @@ Jewel is actively developed and its APIs can change between releases. Treat the 
 - A successful build does not prove native-window behavior. For runtime issues, test the actual window and record observed event flow before editing production UI.
 - Do not compensate for missing evidence with Swing overlays, transparent hit targets, or version upgrades unless the user explicitly authorizes those approaches.
 
-## Mandatory verified-pitfall writeback
+## Verified pitfalls
 
-This is a required closure step, not optional documentation. Before the final response of every Jewel task that confirms a pitfall, update [references/verified-pitfalls.md](references/verified-pitfalls.md).
+Read [references/verified-pitfalls.md](references/verified-pitfalls.md) when it covers the issue being investigated or helps explain a failed or surprising integration. Check each entry against the project's resolved versions.
+
+Update this reference when the user requests recording a finding or maintaining the skill. Ordinary implementation and read-only analysis can finish without changing the global skill or asking for writeback approval. When an update is in scope:
 
 - Record only facts verified by matching source, a test, or live runtime debugging.
 - Include the exact Jewel/Compose/JBR/OS context, symptom, reproduction/evidence, confirmed boundary or cause, safe resolution/status, and source or issue reference.
 - Mark an unresolved cause as unresolved; do not convert a hypothesis into a rule.
 - Correct or replace stale entries when later evidence changes them.
-- If no pitfall was verified, say so internally and do not add a speculative entry.
-
-Read the reference before working on a related issue and after a failed or surprising Jewel integration.
+- Do not add an entry when no pitfall was verified.
