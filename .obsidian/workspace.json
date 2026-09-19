@@ -11,14 +11,14 @@
             "id": "47cfc0d8d35f5f98",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "skills/karpathy-guidelines/SKILL.md",
-                "bFile": "skills/karpathy-guidelines/SKILL.md",
-                "aRef": ""
+                "file": "面试题库/01-自我介绍与项目总览-001-025.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: SKILL  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "01-自我介绍与项目总览-001-025"
             }
           }
         ]
@@ -223,7 +223,10 @@
   },
   "active": "47cfc0d8d35f5f98",
   "lastOpenFiles": [
+    "面试题库/01-答题标准与简历风险.md",
     "面试题库/00-总目录与进度.md",
+    "面试题库/20-ES与消息队列-476-500.md",
+    "面试题库/11-RAG架构切片与混合检索-251-275.md",
     "Kotlin/线程，协程，Dispatcher.md",
     "图片/野协程.png",
     "Java基础/1. 基础1.md",
@@ -265,9 +268,6 @@
     "ai-agent-book/chapter7.md",
     "ai-agent-book/chapter6.md",
     "ai-agent-book/chapter5.md",
-    "ai-agent-book/chapter4.md",
-    "ai-agent-book/chapter3.md",
-    "ai-agent-book/chapter10.md",
-    "ai-agent-book/afterword.md"
+    "ai-agent-book/chapter4.md"
   ]
 }
