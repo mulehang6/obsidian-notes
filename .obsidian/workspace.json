@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai-agent-book/chapter2.md",
+                "file": "基础/MySQL.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "chapter2"
+              "title": "MySQL"
             }
           }
         ]
@@ -213,6 +213,13 @@
   },
   "active": "47cfc0d8d35f5f98",
   "lastOpenFiles": [
+    "基础/Java.md",
+    "基础/MySQL.md",
+    "基础/MySQL/未命名.md",
+    "面试回顾/面试回顾 2026-4-13 腾讯一面 腾讯视频部门.md",
+    "基础/MySQL",
+    "基础/Java",
+    "ai-agent-book/chapter2.md",
     "面试题库/02-Mulehang-Agent-架构与执行循环-026-050.md",
     "面试题库/01-自我介绍与项目总览-001-025.md",
     "面试题库/00-总目录与进度.md",
@@ -220,14 +227,11 @@
     "面试题库/01-答题标准与简历风险.md",
     "面试回顾/面试回顾 2026.6.8 中科凡语.md",
     "面试回顾/面试回顾 2026.4.25 美团AI 面试 (怎么这些东西都面的一坨，转行得了🤣).md",
-    "面试回顾/面试回顾 2026-4-13 腾讯一面 腾讯视频部门.md",
     "面试题库/20-ES与消息队列-476-500.md",
     "面试题库/11-RAG架构切片与混合检索-251-275.md",
     "Kotlin/线程，协程，Dispatcher.md",
     "图片/野协程.png",
-    "Java基础/1. 基础1.md",
     "Kotlin",
-    "ai-agent-book/chapter2.md",
     "ai-agent-book/notes/第二章.md",
     "skills/grill-me/agents/openai.yaml",
     "skills/grill-me/SKILL.md",
@@ -243,8 +247,6 @@
     "skills/jetbrains-jewel/references/ui-patterns.md",
     "skills/jetbrains-jewel/references/migration.md",
     "skills/jetbrains-jewel/references/dependency-model.md",
-    "skills/jetbrains-jewel/references",
-    "skills/jetbrains-jewel/agents/openai.yaml",
     "skills/jetbrains-jewel/SKILL.md",
     "ai-agent-book/chapter1.md",
     "ai-agent-book-notes/第一章.md",
@@ -256,8 +258,6 @@
     "ai-agent-book/images/fig9-5.svg",
     "ai-agent-book/images/fig9-4.svg",
     "ai-agent-book/images/fig9-3.svg",
-    "ai-agent-book/images/fig9-2.svg",
-    "ai-agent-book/reference-answers.md",
-    "ai-agent-book/introduction.md"
+    "ai-agent-book/images/fig9-2.svg"
   ]
 }
