@@ -217,7 +217,7 @@ Logpoint and tracepoint output is buffered as **debugger events** on the session
 - asking the user to reproduce before probes are prepared;
 - `RESUME` without a justified expected next stop;
 - prolonged static-only analysis when one logpoint probe can disambiguate;
-- ignoring library frames instead of reading their decompiled source; extracting JARs manually instead of using `read_file`.
+- ignoring library frames instead of reading their decompiled source.
 
 ## Wrap-up
 After debugging:
