@@ -14,11 +14,11 @@ status: 已完成
 >
 > 代价是并发写能力有限，schema 迁移需要自己管理。当前写入由协调器串行化，符合单窗口桌面应用的负载。
 
-## 152. 数据库为什么拆成三张业务表？
+## 152. 数据库为什么拆成四张业务表？
 
 ### 面试时可以这样答
 
-> `task` 保存标题、工作区、Profile、权限、执行状态等可查询元数据；`task_timeline_item` 保存 UI 时间线；`task_history_item` 保存下一轮模型需要的历史。后两张表用 taskId 加 sequence 作为联合主键。
+> `task` 保存标题、工作区、Profile、权限、执行状态以及会话树元数据；`task_timeline_item` 保存 UI 时间线；`task_history_item` 保存下一轮模型需要的历史；`task_entry` 保存会话内条目图的 id、parentId、类型和 JSON 负载。前三张有序子表用 taskId 加 sequence 作为联合主键，条目图用 taskId 加 entryId 标识节点。
 >
 > 时间线与模型历史看起来相似，但用途不同。UI 可以保存 diff、状态和展示文本，模型历史必须满足消息协议。若只存一份再互相推导，任何展示调整都可能破坏重放语义。
 
@@ -28,13 +28,13 @@ status: 已完成
 
 > Agent 事件的意义依赖顺序。工具调用必须先于结果，推理和正文也有先后。数据库不能依赖默认行顺序，因此保存显式 sequence，加载时 `ORDER BY sequence`。
 >
-> 联合主键还能阻止同一任务出现重复序号。若未来支持分支会话，仅有线性 sequence 不够，还需要 parent 或 branch 标识；当前实现仍是线性任务快照。
+> 联合主键还能阻止同一任务出现重复序号。Session Tree 不能只依赖线性 sequence：当前实现用 `task_entry(id, parent_id, created_at, type, payload_json)` 保存完整条目图，并在 `task` 上保存 `active_entry_id` 与 `head_entry_id`，因此兄弟分支可以共存，活动路径再投影成时间线和模型历史。
 
 ## 154. `saveAll` 为什么在一个事务里先删再重建？
 
 ### 面试时可以这样答
 
-> 当前仓库保存的是整个 UI 任务集合快照。事务内先清空 task，再逐个插入任务、时间线和历史，能让删除、新增和更新同时生效。任一步失败就 rollback，不会留下只写了一半的任务。
+> 当前仓库保存的是整个 UI 任务集合快照。事务内先清空 task，再逐个插入任务、时间线、模型历史和 `task_entry` 条目图，能让删除、新增、更新与分支元数据同时生效。任一步失败就 rollback，不会留下只写了一半的任务。
 >
 > 这种实现简单，但任务很多时写放大会明显。后续可按 updatedAt 做 upsert，并单独删除缺失任务。不过增量方案要更认真地处理子项替换和并发版本。
 
@@ -42,7 +42,7 @@ status: 已完成
 
 ### 面试时可以这样答
 
-> 两张子表通过外键引用 task，并配置 `ON DELETE CASCADE`。每次连接还执行 `PRAGMA foreign_keys = ON`，否则 SQLite 默认可能不启用外键约束。删除主任务后，子项由数据库原子清理。
+> 时间线、模型历史和 `task_entry` 都通过外键引用 task，并配置 `ON DELETE CASCADE`。每次连接还执行 `PRAGMA foreign_keys = ON`，否则 SQLite 默认可能不启用外键约束。删除主任务后，时间线、历史和完整条目图由数据库原子清理。
 >
 > 测试专门验证级联删除，原因不只是整洁。时间线可能包含工具输出和敏感路径，留下不可见孤儿数据属于隐私问题。
 
@@ -90,7 +90,7 @@ status: 已完成
 
 ### 面试时可以这样答
 
-> v1 创建 task、timeline、history 和工作区更新时间索引；v2 增加 profileId 与 permissionPreset；v3 增加 workspaceName；v4 增加 detached workspace 的路径和名称。旧库缺失字段时按顺序补齐。
+> v1 创建 task、timeline、history 和工作区更新时间索引；v2 增加 profileId 与 permissionPreset；v3 增加 workspaceName；v4 增加 detached workspace 的路径和名称；v5 增加外层会话树字段、`task_entry` 条目图和父指针索引；v6 增加 `head_entry_id`，并把已有树会话的 active leaf 回填为 head。旧库缺失字段时按顺序补齐。
 >
 > 默认权限写成 `DEFAULT`，老数据因此能安全恢复。迁移测试会手工建立 v1 数据库，再验证字段、原行和备份保留。
 
@@ -138,7 +138,7 @@ status: 已完成
 
 ### 面试时可以这样答
 
-> 数据库保存了时间线和历史，但没有保存 Koog 图节点、在途网络请求、工具进程和审批 continuation。仅凭 UI 快照无法安全地从原位置继续。因此 Mapper 把 RUNNING、等待输入和等待审批统一恢复为“执行已中断”的 Failed。
+> 数据库保存了时间线、模型历史、会话条目图以及 active/head leaf，但没有保存 Koog 图节点、在途网络请求、工具进程和审批 continuation。仅凭 UI 快照无法安全地从原位置继续。因此 Mapper 把 RUNNING、等待输入和等待审批统一恢复为“执行已中断”的 Failed；树路径和内容可以恢复，不等于运行可以续接。
 >
 > 真正的断点续跑需要持久化执行状态机、幂等工具信息和外部副作用确认，不能只把状态字符串改回 Running。
 
@@ -202,7 +202,7 @@ status: 已完成
 
 ### 面试时可以这样答
 
-> 仓库测试用临时目录和真实 SQLite 文件，验证完整往返、排序、级联删除、非默认 Profile 与权限。迁移测试手工创建旧 schema，打开新仓库后检查数据、默认值和备份数量。
+> 仓库测试用临时目录和真实 SQLite 文件，验证完整往返、排序、级联删除、非默认 Profile 与权限，以及条目图字段。迁移测试手工创建 v1、v4、v5 旧 schema，打开新仓库后检查数据、树格式默认值、v6 head 回填和备份数量。
 >
 > Mapper 测试还应覆盖每种时间线、消息 part、附件和未知枚举。协调器用虚假仓库验证 debounce、激活门槛、串行写和 flush，而不是靠 UI 手测。
 

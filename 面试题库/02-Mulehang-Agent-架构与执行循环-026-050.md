@@ -20,7 +20,7 @@ status: 已完成
 >
 > 我在这个项目中重点处理了三个问题。第一，如何把 Agent 循环写成可理解、可测试的状态图，而不是把所有逻辑塞进一个循环。第二，如何保证工具成功或失败后，消息历史仍满足模型 API 对工具调用配对的要求。第三，如何划清权限和运行资源的边界，例如一次运行开始后冻结其 prompt、MCP 服务和版本信息，避免热更新让同一条执行链前后语义不一致。
 >
-> 所以这个项目的价值不只是“接了大模型接口”，而是把模型、工具、权限、事件流和桌面交互组织成一个能持续演进的运行时。当前我会把已经落地的能力和设计中的能力分开介绍，不会把尚未核实的 Session Tree 等功能说成已经完成。
+> 所以这个项目的价值不只是“接了大模型接口”，而是把模型、工具、权限、事件流、桌面交互和会话分支组织成一个能持续演进的运行时。当前源码已经核实 Session Tree 的两层实现：外层任务父子树与内层条目树；我会把它和仍属后续演进的 Koog 图级 Checkpoint、工作区隔离能力分开介绍。
 
 ### 面试官继续追问
 
@@ -152,7 +152,7 @@ Compose UI / 持久化 / 日志
 
 > 这个项目本身使用 Kotlin，并且是桌面端工程，所以我优先考虑对 Kotlin 类型系统、协程和多平台生态更自然的框架。Koog 提供 `AIAgent`、工具注册、事件处理以及图式 Agent 等抽象，我可以把精力放在运行语义、权限和 UI 事件上，而不是自己从 HTTP 协议开始拼一个循环。
 >
-> 我最看重的是它允许显式定义 graph strategy。节点表示具体动作，边表达控制流和数据流，工具调用、工具结果和结束条件可以直接映射到状态图。它也提供 Agent persistence 的概念，可以在节点之后创建检查点。这些能力与桌面 Agent 需要的可观察、可恢复方向契合。
+> 我最看重的是它允许显式定义 graph strategy。节点表示具体动作，边表达控制流和数据流，工具调用、工具结果和结束条件可以直接映射到状态图。Koog 生态也讨论 Agent persistence，可以在节点之后创建检查点；但当前项目实际接入的是自定义任务快照和会话条目树，并没有把 Koog 图节点、在途 continuation 持久化成可续跑 Checkpoint。这些能力与桌面 Agent 需要的可观察、可恢复方向契合，也明确了当前边界。
 >
 > 选择框架不代表把核心逻辑全部交给框架。我仍然定义了自己的 `AgentRunRequest`、`AgentStreamEvent` 和资源快照，并为流式消息历史做了自定义节点。这样既利用 Koog 的执行能力，又避免产品层被它的内部类型完全绑死。
 
@@ -426,4 +426,3 @@ Compose UI / 持久化 / 日志
 - [Koog：Graph-based agents](https://github.com/JetBrains/koog/blob/develop/docs/docs/agents/graph-based-agents.md)
 - [Koog：Agent persistence](https://github.com/JetBrains/koog/blob/develop/docs/docs/features/agent-persistence.md)
 - [Mulehang Agent 仓库](https://github.com/mulehang6/mulehang-agent)
-
