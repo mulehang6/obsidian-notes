@@ -16,9 +16,13 @@
 | `fetch_query_result` | A query result is paged or deferred | Use the query/session ID returned by execution. |
 | `list_recent_sql_queries` | You need to inspect recent query activity | Read history before retrying/cancelling a query. |
 | `cancel_sql_query` | A known query session must stop | Use only the exact session ID returned by query tools. |
-| `create_database_connection`, `edit_database_connection` | The user explicitly asks to create/edit a data source | Confirm DBMS, JDBC URL, and whether an immediate connection test is wanted. |
+| `create_database_connection`, `edit_database_connection` | The user explicitly asks to create/edit a data source | Resolve DBMS, exact JDBC URL and test flag from the task and existing configuration; ask only for missing information. |
 
 Default order: connections → optional health check → schemas → object kinds → objects → description/preview → query.
+
+Use these dedicated tools for database work. A missing data source is not authorization to switch to Python, Node.js, JDBC or command-line queries. Report the missing connection; create it when the user has authorized creation, otherwise request that authorization. Reuse authorization already present in the conversation.
+
+Verified against the [IDEA 2026.2 MCP documentation](https://www.jetbrains.com/help/idea/2026.2/mcp-server.html): create_database_connection requires name, dbms, url and needToCheckDs. The current router accepted SQLite with a normal `jdbc:sqlite:<absolute-db-file>` URL and returned successful diagnostics with needToCheckDs=true. It rejected the attempted URI/query variants using mode=ro. A standard connection that passed this check is not proven read-only; use only the authorized queries and do not claim a read-only data source without verifying it.
 
 ## Inspection-KTS and PSI
 
@@ -39,11 +43,11 @@ Default order: connections → optional health check → schemas → object kind
 | `await_walkthrough_question` | A walkthrough popup is active | Call immediately after showing; on `waiting-expired`, call again with the same ID. |
 | `insert_walkthrough_tangents` | The user asked a follow-up inside the walkthrough | Insert the answer, then resume the wait loop. |
 
-Keep the loop active until the wait tool returns `dismissed`.
+Use the available `walkthrough` skill for the interaction loop and task-specific wait limits. This reference does not independently authorize creating a walkthrough UI.
 
 ## Router observations (IDEA 2026.2)
 
-- Calling a database or walkthrough tool without its required arguments returns a structured `isError: true` response listing the missing parameters; it does not throw at the router boundary. This is a safe way to confirm a contract when no connection or walkthrough has been authorized.
+- Calling a database or walkthrough tool without its required arguments returns a structured `isError: true` response listing the missing parameters; it does not throw at the router boundary. Use validation feedback only for the task-needed operation. Do not probe mutating, executing or UI tools solely to discover their arguments.
 - Do not use a parameterless `xdebug_remove_breakpoint` merely as a probe: it defaults to `owner=agent` and can remove **all** agent-owned breakpoints. In an empty project it reports `removed: false`, but that outcome must not be assumed. Use `xdebug_list_breakpoints` for a read-only probe instead.
 - Debugger tools do not validate in one consistent order. `xdebug_get_threads`, `xdebug_get_stack`, and `xdebug_get_frame_values` first report that no active session exists, while `xdebug_get_value_by_path` and `xdebug_evaluate_expression` first report their missing required argument. Always bind a live session before treating such errors as parameter feedback.
 - A missing walkthrough ID is rejected before any walkthrough UI is shown; this can safely confirm the three follow-up tool contracts without creating an interactive popup.
@@ -59,12 +63,12 @@ Keep the loop active until the wait tool returns `dismissed`.
 | `cancel_sql_query` | `sessionId!`, `projectPath?` |
 | `create_database_connection` | `name!`, `dbms!`, `url!`, `needToCheckDs!`, `projectPath?` |
 | `edit_database_connection` | `connectionId!`, `dbms!`, `url!`, `needToCheckDs!`, `projectPath?` |
-| `execute_sql_query` | `connectionId!`, `databaseName!`, `schemaName!`, `queryText!`, `projectPath?` |
+| `execute_sql_query` | `connectionId!`, `queryText!`, `projectPath?`; older router references also listed databaseName/schemaName, check the current contract |
 | `fetch_query_result` | `resultSetId!`, `offset!`, `projectPath?` |
 | `get_database_object_description` | `connectionId!`, `databaseName!`, `schemaName!`, `kind!`, `objectName!`, `projectPath?` |
 | `introspect_schema` | `connectionId!`, `databaseName!`, `schemaName!`, `projectPath?` |
 | `list_database_connections` | `projectPath?` |
-| `list_database_schemas` | `connectionId!`, `projectPath?` |
+| `list_database_schemas` | `connectionId!`, `selectedOnly?`, `projectPath?` |
 | `list_recent_sql_queries` | `connectionId!`, `projectPath?` |
 | `list_schema_object_kinds` | `connectionId!`, `projectPath?` |
 | `list_schema_objects` | `connectionId!`, `databaseName!`, `schemaName!`, `kind?`, `projectPath?` |

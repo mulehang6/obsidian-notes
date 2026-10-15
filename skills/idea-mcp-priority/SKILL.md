@@ -1,49 +1,43 @@
 ---
 name: idea-mcp-priority
-description: Use when a task touches the current JetBrains project/workspace and IDEA MCP tools are available. Routes project navigation, source analysis, inspections, refactoring, build/run/test, debugging, Git, database, and walkthrough work through direct IDEA tools or an execute_tool router.
+description: Prefer JetBrains built-in IDEA MCP read_file for project source and documents, dependencies, decompiled and virtual sources; also use it for IDE project information, authorized execution, debugging and specialist workflows. Code intelligence follows ide-index-mcp and user or repository rules.
 ---
 
 # IDEA MCP Priority
 
-Use IDEA MCP before generic project tools for work in the current JetBrains workspace. This skill governs discovery, routing, and verification; repository editing rules still apply.
+Use the built-in IDEA MCP for the capabilities retained here. Code search, navigation, symbol and call analysis, semantic refactoring, code formatting, diagnostics and builds follow `ide-index-mcp`. This skill does not provide built-in alternatives for those overlapping capabilities. Task-authorized test discovery and execution may use built-in IDEA run configurations; test debugging and its non-debug reproduction runs follow `ij-debugger`. User and repository rules take priority.
 
-## Reading Order
+Read project source and documents through built-in IDEA `read_file`, including ordinary disk files. Dependencies, decompiled classes and virtual/archive entries use the same tool. Do not use Index MCP `ide_read_file`, Python file-reading libraries or shell reads as an automatic substitute for project source.
 
-Read only the reference needed for the task. This skill is self-contained: its `references/` directory supplies the operational guidance for every supported IDEA tool family.
+`read_file` only accepts files within the already-open project's roots, libraries and SDKs. First try the confirmed project and, when present, its real workspace alias. If a global skill or other non-source document is outside those roots, explain the rejection before using PowerShell `Get-Content` on Windows. If project source reading is unavailable, report the limitation and request a usable connection or explicit fallback; do not silently change readers or open another project.
 
-| Intent | Read first |
+## Reading order
+
+Before the first `execute_tool` router call in a session, read [references/invocation.md](references/invocation.md), then the topic reference for that operation. Resolve the inner tool name and required flags from those references before calling it.
+
+Read only the reference needed for the task.
+
+| Intent | Reference |
 | --- | --- |
-| Direct tools, router mode, prefixes, parameters | `references/invocation.md` |
-| Files, search, symbols, call hierarchy, project state | `references/navigation-and-analysis.md` |
-| Manual edits, refactors, inspections, build and Git | `references/change-and-verification.md` |
-| Run configurations, tests and debugging | `references/run-and-debug.md` |
-| Database, Inspection-KTS/PSI and walkthroughs | `references/specialist-tools.md` |
+| Direct tools, router mode, parameters | [invocation.md](references/invocation.md) |
+| Attached sources, IDE project information and VCS state | [navigation-and-analysis.md](references/navigation-and-analysis.md) |
+| Manual file handling, module-template identification and acceptance checks | [change-and-verification.md](references/change-and-verification.md) |
+| Authorized test/non-test IDE runs and debugging | [run-and-debug.md](references/run-and-debug.md) |
+| Database, Inspection-KTS/PSI and walkthroughs | [specialist-tools.md](references/specialist-tools.md) |
 
-When individual IDEA tools are directly exposed, their live descriptions and schemas are authoritative for exact field names, types, defaults, and result shapes. In router-only mode, use the relevant reference page's documented calling pattern and runtime validation feedback.
+## Core rules
 
-## Core Rules
+1. Inspect visible tools and the lazy tool catalog for the built-in IDEA interface before declaring it unavailable. Use directly exposed tools with their current schemas; in the current router mode, use `mcp__idea__execute_tool`.
+2. Confirm which IDE and already-open project serve the task. Pass its absolute `projectPath` on direct calls or as the router's outer argument. Do not silently switch projects or probe a path that could open a project or start an IDE without authorization.
+3. Manual edits, file creation, directory/path-glob operations and commands use the agent's own tools. Windows commands prefer pwsh 7. File reads follow the read_file rule above.
+4. Read dependency sources, decompiled classes and virtual/archive entries through built-in `read_file`. Use the exact IDEA-resolved path and verify the target module, dependency version and returned line coverage. A matching FQN alone does not identify the intended dependency version.
+5. Database discovery and queries use the dedicated IDEA MCP database tools in specialist-tools.md. Do not automatically replace them with Python, Node.js, JDBC or command-line database scripts; report unavailable connections and request an explicit fallback. IDE project-model, Inspection-KTS/PSI and walkthrough capabilities remain available for their specific tasks. Do not use specialist scripts to replace ordinary code navigation or diagnostics assigned to Index MCP.
+6. Repository tests, packaging and compatibility checks use the required host commands. Use test or non-test IDE run configurations when the task authorizes an IDE run; do not start an IDE or app merely for validation. Runtime debugging and its test reproduction runs follow `ij-debugger` when available and applicable.
 
-1. Detect the currently exposed IDEA interface before choosing a tool. Inspect both the initially visible tools and the lazy tool catalog (`ALL_TOOLS`) for an IDEA router before declaring IDEA MCP unavailable. Never hard-code a prefix such as `mcp__idea__` or `IDEA___`.
-2. Prefer direct IDEA tools when individual tools and schemas are exposed. Otherwise locate the universal `execute_tool` router and follow `references/invocation.md`.
-3. Pass a known `projectPath` on every direct IDEA call, or as the router's **outer** argument. Do not rely on `--projectPath` inside a router command.
-4. Use IDEA search, source reading, symbol, module, inspection, run-configuration and database capabilities before shell alternatives when they cover the workspace task. Choose the discovery path below; read identified project source with `read_file`, including snippets and attached dependency sources.
-5. Treat project files, attached dependency sources, decompiled classes, and archive entries as IDEA-readable source: run `search_symbol` with external lookup enabled when needed, then pass the returned `*.jar!\\...` path unchanged to `read_file`. Do not unpack JARs, use `javap`, or read workspace source with shell while IDEA can resolve it.
-6. Use your own tools for manual edits and file creation; user and repository rules take priority. Do **not** use `create_new_file`.
-7. Use `rename_refactoring` for symbol renames; never perform them as blind text replacements.
-8. Inspect errors and warnings when a source file or a coherent group of interdependent edits is complete. Use `get_file_problems` for one file or `lint_files` for a known changed set. Fix issues introduced by the change, including duplicate code; report unrelated existing issues without expanding the task. Run an affected-scope build or tests when needed for validation beyond IDE inspections.
-9. For runtime debugging, activate the official `ij-debugger` skill. This skill routes to IDEA MCP but does not duplicate debugger procedure.
+## Discovery and fallback
 
-## Code discovery
+When only unfamiliar behavior is known, follow the repository's `jbcontext` discovery workflow. Once located, read source through built-in read_file; code search and semantic analysis follow `ide-index-mcp`, subject to user and repository rules. Multi-step exploration follows the repository's delegation and model rules; this skill does not mandate a fixed-model role.
 
-- When the location is unknown and the request describes behavior, start with an available jbcontext semantic search tool or `jbcontext search`. Use one focused query and inspect the relevant result before broadening the search.
-- When a file, path, or symbol is known, read it directly or use IDEA's exact file, text, or symbol search. Semantic search is unnecessary for a known diff, Git operation, or build command.
-- For multi-step exploration, use `context_explorer` when available and delegation is permitted. Base delegation on the complexity and independence of the investigation, not the number of searches. Give it a bounded question, continue useful independent work, and collect its result before concluding.
-- Once relevant code is located, continue with IDEA `read_file`, `get_symbol_info`, and `analyze_calls`. Narrow further searches to that area where possible.
+Use current schemas where exposed. Router references record installation-specific observations; validate the needed call and its actual output rather than inventing flags or treating all examples as freshly verified. Do not deliberately provoke errors to enumerate tools, or use mutations/execution to discover parameters.
 
-## Source-reading default
-
-Use `read_file` as the first and continued path for source content. For a normal-sized file, a complete IDEA read followed by local in-memory extraction is valid when only chat-provided byte offsets are known. For an ordinary snippet, use the router's verified start-line offset, inspect the returned boundaries, and locally crop any excess content the router returns. Read `references/navigation-and-analysis.md` before handling selected-text byte offsets or a failed slice attempt.
-
-## Fallback
-
-Use a non-IDE fallback only when the target is outside the workspace, no suitable IDEA capability exists, or IDEA MCP has failed and retrying is not a reasonable next step. State that limitation rather than guessing tool parameters or results.
+If a retained built-in capability is unavailable or still fails after a justified correction, state the limitation. Source reading follows the explicit fallback rule above; other capabilities may use an equivalent own-tool workflow where authorized. Do not substitute Index `ide_read_file` for built-in source reading. Do not repeatedly retry unchanged errors or perform unrelated discovery.

@@ -1,13 +1,15 @@
-# Run, Test, And Debug Tools
+# Runs, tests and debugging
 
-## Run and test
+## Test and non-test runs
 
 | Tool | Use it when | Key usage rule |
 | --- | --- | --- |
-| `get_run_configurations` | Before running an app, test, or runnable code location | This is the source of truth for exact configuration names, runnable file/line locations, and whether temporary launch overrides are supported. |
-| `execute_run_configuration` | Run a known configuration or discovered runnable file/line | Pass an exact returned configuration name, or the returned file-and-line pair. Do not invent configuration names. Only pass argument/environment/working-directory overrides when the configuration says it supports them. |
+| `get_run_configurations` | Before running an authorized test or non-test process | This is the source of truth for exact configuration names, runnable file/line locations, and whether temporary launch overrides are supported. |
+| `execute_run_configuration` | Run a known test/non-test configuration or discovered runnable file/line | Pass an exact returned configuration name, or the returned file-and-line pair. Do not invent configuration names. Only pass argument/environment/working-directory overrides when the configuration says it supports them. |
 
-For `waitForExit=true`, treat a timeout as an execution that may still be running; use returned output or full-output location rather than claiming a final result. Do not use ad hoc shell launch commands when an applicable run configuration exists.
+Task-authorized test discovery and execution may use these built-in run tools. Follow `ij-debugger` for test debugging, including an ordinary `execute_run_configuration` run to reproduce a failure before starting debugging. Repository-required acceptance commands remain host-command work.
+
+For `waitForExit=true`, treat a timeout as an execution that may still be running; use returned output or full-output location rather than claiming a final result. Use a discovered test or non-test run configuration for task-authorized IDE execution. Repository acceptance commands remain own-tool work. No IDE or app launch is authorized merely by this reference.
 
 ## Debugging
 
@@ -21,7 +23,7 @@ Do not reproduce an ad hoc debugger flow here. In particular, use status-derived
 
 ## Run parameter fields
 
-`!` is schema-required and `?` is optional. Pass known `projectPath`; router calls convert direct camelCase fields to `--snake_case` and pass JSON values for `envs`.
+`!` is schema-required and `?` is optional. Pass known `projectPath`; router flags preserve each tool's recorded casing; do not mechanically convert camelCase to snake_case. Pass JSON text for `envs`.
 
 | Tool | Fields |
 | --- | --- |
