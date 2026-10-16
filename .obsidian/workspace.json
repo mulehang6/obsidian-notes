@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c65d803499ee4421",
+        "id": "8f22eac31b372337",
         "type": "tabs",
         "children": [
           {
-            "id": "47cfc0d8d35f5f98",
+            "id": "415726f300be0b87",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "skills/opentui/docs/components/slider.mdx",
-                "bFile": "skills/opentui/docs/components/slider.mdx",
-                "aRef": ""
+                "file": "面试回顾/面试回顾 2026.10.16 绿盟.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: slider.mdx  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "面试回顾 2026.10.16 绿盟"
             }
           }
         ]
@@ -210,22 +210,29 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "47cfc0d8d35f5f98",
+  "active": "415726f300be0b87",
   "lastOpenFiles": [
+    "Excalidraw/Redis/Redis数据类型.excalidraw.md",
+    "面试回顾/面试回顾 2026.10.16 绿盟.md",
+    "进阶/Redis.md",
+    "ai-agent-book/chapter2.md",
+    "Kotlin/线程，协程，Dispatcher.md",
+    "Kotlin/协程中的一些常见问题.md",
     "面试回顾/面试回顾 2026-4-13 腾讯一面 腾讯视频部门.md",
+    "面试回顾/面试回顾 2026.6.2 武汉合力亿捷.md",
+    "面试回顾/面试回顾 2026.6.8 中科凡语.md",
+    "面试回顾/面试回顾 2026.4.25 美团AI 面试 (怎么这些东西都面的一坨，转行得了🤣).md",
     "Excalidraw/插件原型/原型1.md",
     "Excalidraw/插件原型",
     "面试题库/简历聚焦版/04-技术交流平台-Redis与查询链路.md",
     "面试题库/长版/08-Mulehang-Agent-检查点会话树与JCEF-176-200.md",
     "面试题库/长版/06-Mulehang-Agent-模型配置与提供商适配-126-150.md",
     "面试题库/长版/07-Mulehang-Agent-SQLite与任务持久化-151-175.md",
-    "ai-agent-book/chapter2.md",
     "面试题库/简历聚焦版/03-Mulehang-Agent-SQLite与Session树.md",
     "面试题库/简历聚焦版/02-Mulehang-Agent-执行闭环与Hooks.md",
     "面试题库/长版/00-总目录与进度.md",
     "基础/MySQL.md",
     "面试题库/长版",
-    "面试回顾/面试回顾 2026.6.8 中科凡语.md",
     "面试题库/简历聚焦版/01-自我介绍与项目边界.md",
     "面试题库/简历聚焦版/00-目录与使用说明.md",
     "基础/Java.md",
@@ -234,17 +241,10 @@
     "基础/Java",
     "面试题库/长版/02-Mulehang-Agent-架构与执行循环-026-050.md",
     "面试题库/长版/01-自我介绍与项目总览-001-025.md",
-    "面试回顾/面试回顾 2026.6.2 武汉合力亿捷.md",
     "面试题库/长版/01-答题标准与简历风险.md",
-    "面试回顾/面试回顾 2026.4.25 美团AI 面试 (怎么这些东西都面的一坨，转行得了🤣).md",
-    "面试题库/长版/20-ES与消息队列-476-500.md",
-    "面试题库/长版/11-RAG架构切片与混合检索-251-275.md",
-    "Kotlin/线程，协程，Dispatcher.md",
     "图片/野协程.png",
     "Kotlin",
-    "ai-agent-book/notes/第二章.md",
     "skills/grill-me/agents/openai.yaml",
-    "skills/grill-me/SKILL.md",
     "skills/grill-me/agents",
     "skills/grill-me",
     "skills/find-docs",
