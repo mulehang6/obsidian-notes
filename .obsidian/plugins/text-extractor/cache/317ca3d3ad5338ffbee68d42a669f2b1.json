@@ -1,0 +1,1 @@
+{"path":"Pasted image 20261018150511.png","text":"runBlocking 的 执 行 过 程 普 通 函 数 调 用 ranBlocking ¥ 创 建 协 程 作 用 域 执 行 协 程 代 码 , 等 待 所 有 子 代 务 完 成 即 使 内 部 delay 挂 起 , 调 用 线 程 也 不 能 从 unBlocking 返 回 ¥ 返 回 结 果 , 解 除 调 用 线 程 的 阻 塞","libVersion":"0.5.0","langs":"chi_sim+eng"}
