@@ -1,0 +1,1 @@
+{"path":"协程挂起与恢复的概念图.png","text":"协 程 挂 起 与 恢 复 的 概 吾 图 执 行 getUser(0 printin(-1. 开 始 查 洛 “ v @ 执 行 delay(1000), Continuation / 状 态 机 计 时 机 制 保 存 扒 行 位 置 和 必 婉 数 据 安 排 约 1 秒 后 触 发 侥 复 v 时 间 到 , 触 发 侥 复 并 由 调 度 机 制 安 排 抒 行 & getUser() printin(:2. 查 询 完 成 ) return “Alice“","libVersion":"0.5.0","langs":"chi_sim+eng"}

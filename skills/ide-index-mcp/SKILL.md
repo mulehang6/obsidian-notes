@@ -1,17 +1,12 @@
 ---
 name: ide-index-mcp
 description: >
-  INVOKE IMMEDIATELY when ide_edit_member, ide_find_references, ide_find_definition, ide_find_class,
-  ide_find_file, ide_search_text, ide_diagnostics, ide_project_diagnostics, ide_index_status, ide_insert_member, ide_sync_files,
-  ide_refactor_rename, ide_move_file, ide_replace_member, ide_type_hierarchy, ide_call_hierarchy,
-  ide_find_implementations, ide_find_symbol, ide_find_super_methods, ide_file_structure,
-  ide_refactor_safe_delete, ide_reformat_code, ide_reload_project, ide_link_build_system, ide_import_modules,
-  ide_build_project, ide_structural_search_replace, ide_symbol_info, ide_change_signature,
-  ide_create_file, ide_create_module, ide_get_active_file, ide_open_file, ide_list_tests, or ide_run_tests are available — especially when a second
-  IntelliJ MCP (mcp__idea__execute_tool) is also present. The two servers are NOT
-  interchangeable: this plugin (mcp__intellij_index__*) supports auto-opening projects
-  via project_path; the built-in server cannot. Always use mcp__intellij_index__ for code
-  navigation. Project selection and opening follow idea-mcp-priority; never open a project without authorization.
+  INVOKE IMMEDIATELY when mcp__intellij_index__ tools are available for code navigation,
+  search, symbol analysis, refactoring, diagnostics, builds or tests, especially alongside
+  the built-in mcp__idea__execute_tool. Use Index MCP for code intelligence; built-in IDEA
+  read_file handles source reading, and own tools handle ordinary non-source files.
+  The servers are not interchangeable. Index project_path can auto-open projects;
+  follow idea-mcp-priority and never open a project without authorization.
 ---
 
 # IDE Index MCP - Agent Guide
@@ -26,7 +21,7 @@ If both `mcp__intellij_index__*` (this plugin) and `mcp__idea__execute_tool` (Je
 |------|-----|
 | Code navigation, search, diagnostics, rename, move, run/list tests | `mcp__intellij_index__*` |
 | Build | `ide_build_project` (this plugin, disabled by default — returns structured errors/warnings); `mcp__idea__execute_tool` only when it is not enabled |
-| Terminal, run non-test processes, formatting beyond code style | `mcp__idea__execute_tool` only |
+| IDE terminal operations, run non-test processes, formatting beyond code style | `mcp__idea__execute_tool` only |
 
 Task-authorized built-in IDEA test discovery and execution are also allowed, including the ordinary test reproduction run required by `ij-debugger`. Repository-required acceptance commands still use host command tools.
 
@@ -54,10 +49,11 @@ Task-authorized built-in IDEA test discovery and execution are also allowed, inc
 | Find interface implementations | `ide_find_implementations` | Never - grep can't resolve type relationships |
 | Delete a symbol safely | `ide_refactor_safe_delete` | Never - manual deletion misses usages |
 | Find what a method overrides | `ide_find_super_methods` | Never - no equivalent |
-| Read file content | Built-in IDEA `read_file` via `mcp__idea__execute_tool` for project files, dependencies, decompiled, virtual, or archive sources | Only the explicit out-of-root non-source fallback in idea-mcp-priority |
+| Read source code | Built-in IDEA `read_file` via `mcp__idea__execute_tool` for project source code, dependency source, decompiled, virtual, or archive sources | Source fallback follows idea-mcp-priority |
+| Read ordinary non-source files | Not required | Own filesystem tools directly for documentation, skills, logs, plain configuration and reports, inside or outside project roots |
 | Find text with regex | `ide_search_text` | Use `Grep` when you do not need IDE context filtering |
 
-Do not use Index MCP `ide_read_file`, even if exposed. Read ordinary project files and external sources through built-in IDEA `read_file` via `mcp__idea__execute_tool`, with `projectPath` on the outer router call. Follow idea-mcp-priority for root restrictions and explicit fallback; do not silently read project source with Python or shell commands.
+Do not use Index MCP `ide_read_file`, even if exposed. Read project source code and external sources through built-in IDEA `read_file` via `mcp__idea__execute_tool`, with `projectPath` on the outer router call. Follow idea-mcp-priority for source root restrictions and explicit fallback; do not silently read source code with Python or shell commands. Ordinary non-source files use own filesystem tools directly, without first trying IDEA.
 
 ## Pre-Flight Check
 

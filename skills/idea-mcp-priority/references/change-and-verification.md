@@ -1,6 +1,6 @@
 # File handling and acceptance checks
 
-Manual source edits, file creation and commands use your own tools, following user and repository rules. Project source and document reads use built-in IDEA read_file, with only the explicit fallback in SKILL.md. Semantic refactoring, code formatting, diagnostics and IDE builds follow `ide-index-mcp`; this reference does not offer overlapping built-in tools.
+Manual source edits, file creation and commands use your own tools, following user and repository rules. Source code reads use built-in IDEA read_file, with the explicit fallback in SKILL.md. Ordinary non-source files use own filesystem tools directly. Semantic refactoring, code formatting, diagnostics and IDE builds follow `ide-index-mcp`; this reference does not offer overlapping built-in tools.
 
 | Tool | Use it when | Key usage rule |
 | --- | --- | --- |

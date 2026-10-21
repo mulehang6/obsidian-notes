@@ -1,15 +1,17 @@
 ---
 name: idea-mcp-priority
-description: Prefer JetBrains built-in IDEA MCP read_file for project source and documents, dependencies, decompiled and virtual sources; also use it for IDE project information, authorized execution, debugging and specialist workflows. Code intelligence follows ide-index-mcp and user or repository rules.
+description: Prefer JetBrains built-in IDEA MCP read_file for project source code, dependency source, decompiled and virtual sources. Read ordinary non-source files with the agent's own tools. Also use IDEA MCP for IDE project information, authorized execution, debugging and specialist workflows. Code intelligence follows ide-index-mcp and user or repository rules.
 ---
 
 # IDEA MCP Priority
 
 Use the built-in IDEA MCP for the capabilities retained here. Code search, navigation, symbol and call analysis, semantic refactoring, code formatting, diagnostics and builds follow `ide-index-mcp`. This skill does not provide built-in alternatives for those overlapping capabilities. Task-authorized test discovery and execution may use built-in IDEA run configurations; test debugging and its non-debug reproduction runs follow `ij-debugger`. User and repository rules take priority.
 
-Read project source and documents through built-in IDEA `read_file`, including ordinary disk files. Dependencies, decompiled classes and virtual/archive entries use the same tool. Do not use Index MCP `ide_read_file`, Python file-reading libraries or shell reads as an automatic substitute for project source.
+Read project source code through built-in IDEA `read_file`, including source files on disk. Dependency source, decompiled classes and virtual/archive source entries use the same tool. Do not use Index MCP `ide_read_file`, Python file-reading libraries or shell reads as an automatic substitute for source code.
 
-`read_file` only accepts files within the already-open project's roots, libraries and SDKs. First try the confirmed project and, when present, its real workspace alias. If a global skill or other non-source document is outside those roots, explain the rejection before using PowerShell `Get-Content` on Windows. If project source reading is unavailable, report the limitation and request a usable connection or explicit fallback; do not silently change readers or open another project.
+Read ordinary non-source files directly with the agent's own filesystem tools: documentation, AGENTS.md, skills, logs, plain configuration and test/build reports. This applies both inside and outside project roots; Windows text reads prefer PowerShell `Get-Content`. No IDEA attempt or root-rejection explanation is needed first.
+
+For source code, `read_file` only accepts files within the already-open project's roots, libraries and SDKs. Use the confirmed project and, when present, its real workspace alias. If source reading is unavailable, report the limitation and request a usable connection or explicit fallback; do not silently change readers or open another project.
 
 ## Reading order
 

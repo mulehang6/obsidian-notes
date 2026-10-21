@@ -4,7 +4,7 @@ Use these retained tools for source access and IDE-specific project context. Pas
 
 | Tool | Use it when | Key usage rule |
 | --- | --- | --- |
-| `read_file` | You need project source/documents, dependency source, decompiled code, or a virtual/archive entry | Use the confirmed project path; preserve IDEA-resolved dependency paths. In router mode use `--file_path`; never use Index `ide_read_file`. |
+| `read_file` | You need project source code, dependency source, decompiled code, or a virtual/archive source entry | Use the confirmed project path; preserve IDEA-resolved dependency paths. In router mode use `--file_path`; never use Index `ide_read_file`. |
 | `list_directory_tree` | The IDE project model is needed | Ordinary directory listing and path-glob enumeration use own filesystem tools. |
 | `get_project_modules` | Module names/types in the loaded IDE model are needed | Do not infer this from Gradle/Maven files unless raw build text is the goal. |
 | `get_project_dependencies` | Declared project/module dependencies matter | Use it before inspecting dependency declarations manually. |
@@ -14,7 +14,7 @@ Use these retained tools for source access and IDE-specific project context. Pas
 
 ## Reading workflow
 
-Use built-in IDEA `read_file` through `mcp__idea__execute_tool` for ordinary project files as well as dependency, decompiled and virtual sources. Keep `projectPath` on the outer router call. Out-of-root non-source documents and unavailable source reading follow the fallback policy in SKILL.md; do not silently switch to Python or shell source reads.
+Use built-in IDEA `read_file` through `mcp__idea__execute_tool` for project source code, dependency source, decompiled and virtual sources. Keep `projectPath` on the outer router call. Unavailable source reading follows the fallback policy in SKILL.md; do not silently switch to Python or shell source reads. Ordinary non-source files use own filesystem tools directly, including project documentation, skills, logs, configuration and reports.
 
 Use the exact source path resolved by IDEA, verify numbered output ranges, and crop in memory if needed. Selection byte offsets are not line offsets. Do not unpack JARs with shell while IDEA can read the resolved source.
 
