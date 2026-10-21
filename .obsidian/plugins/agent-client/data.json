@@ -70,6 +70,27 @@
       ],
       "env": [],
       "enabled": true
+    },
+    "pi-acp": {
+      "id": "pi-acp",
+      "displayName": "Pi",
+      "apiKeySecretId": "",
+      "command": "pi-acp",
+      "args": [],
+      "env": [],
+      "enabled": true
+    },
+    "grok-build": {
+      "id": "grok-build",
+      "displayName": "Grok Build",
+      "apiKeySecretId": "",
+      "command": "grok",
+      "args": [
+        "agent",
+        "stdio"
+      ],
+      "env": [],
+      "enabled": true
     }
   },
   "customAgents": [],
@@ -95,6 +116,9 @@
     "includeImages": true,
     "imageLocation": "obsidian",
     "imageCustomFolder": "Agent Client",
+    "includeAudios": true,
+    "audioLocation": "obsidian",
+    "audioCustomFolder": "Agent Client",
     "frontmatterTag": "agent-client"
   },
   "windowsWslMode": false,
@@ -109,6 +133,14 @@
     "fontSize": null
   },
   "savedSessions": [
+    {
+      "sessionId": "b07c2366-149b-4587-bd8d-ad8401da85e2",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "帮我生成此仓库的git提交信息",
+      "createdAt": "2026-10-21T08:13:11.931Z",
+      "updatedAt": "2026-10-21T08:14:02.709Z"
+    },
     {
       "sessionId": "d2d1374b-2311-4e96-b911-2e53658fbeb2",
       "agentId": "claude-code-acp",
@@ -166,7 +198,9 @@
       "updatedAt": "2026-05-11T14:51:42.642Z"
     }
   ],
-  "lastUsedModels": {},
+  "lastUsedModels": {
+    "claude-code-acp": "opus"
+  },
   "lastUsedModes": {
     "codex-acp": "full-access",
     "claude-code-acp": "auto"
@@ -175,6 +209,10 @@
     "claude-code-acp": {
       "effort": "max"
     }
+  },
+  "sessionHistoryFilters": {
+    "currentVaultOnly": true,
+    "hideNonLocal": false
   },
   "enableFloatingChat": false,
   "floatingButtonImage": "",

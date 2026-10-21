@@ -187,13 +187,23 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "0a6f72d8bbb1561f",
+            "type": "leaf",
+            "state": {
+              "type": "agent-client-chat-view",
+              "state": {},
+              "icon": "bot-message-square",
+              "title": "帮我生成此仓库的git提交信息"
+            }
           }
         ],
         "currentTab": 6
       }
     ],
     "direction": "horizontal",
-    "width": 365.679443359375
+    "width": 427.14599609375
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -211,8 +221,9 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "415726f300be0b87",
+  "active": "a4bcadcc50808fe4",
   "lastOpenFiles": [
+    "图片/kotlin协程学习/协程作用域示例.png",
     "Kotlin/协程/协程中的一些常见问题.md",
     "Kotlin/协程/协程学习.md",
     "Kotlin/协程/进程与线程.md",
