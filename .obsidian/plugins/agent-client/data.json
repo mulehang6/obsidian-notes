@@ -134,12 +134,20 @@
   },
   "savedSessions": [
     {
+      "sessionId": "cb805a48-d0c9-4b32-86e8-80483df18234",
+      "agentId": "claude-code-acp",
+      "cwd": "D:\\obsidian-notes",
+      "title": "以 图x - x的形式，帮我整理这个文件中的所有图片",
+      "createdAt": "2026-10-27T06:48:52.292Z",
+      "updatedAt": "2026-10-27T06:51:24.665Z"
+    },
+    {
       "sessionId": "b07c2366-149b-4587-bd8d-ad8401da85e2",
       "agentId": "claude-code-acp",
       "cwd": "D:\\obsidian-notes",
       "title": "帮我生成此仓库的git提交信息",
       "createdAt": "2026-10-21T08:13:11.931Z",
-      "updatedAt": "2026-10-27T05:49:49.803Z"
+      "updatedAt": "2026-10-27T07:45:50.686Z"
     },
     {
       "sessionId": "d2d1374b-2311-4e96-b911-2e53658fbeb2",
@@ -203,7 +211,7 @@
   },
   "lastUsedModes": {
     "codex-acp": "full-access",
-    "claude-code-acp": "auto"
+    "claude-code-acp": "bypassPermissions"
   },
   "lastUsedConfigOptions": {
     "claude-code-acp": {

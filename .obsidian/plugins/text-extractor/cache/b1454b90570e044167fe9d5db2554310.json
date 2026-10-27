@@ -1,0 +1,1 @@
+{"path":"Pasted image 20261027144548.png","text":"协 程 A 对 应 的 Job 通 常 会 经 历 这 样 的 状 态 变 化 : 正 常 完 成 路 径 Active 5 Completing 5 Completed 正 82 行 琼 街 代 网 英 根 , 等佩 孔 务 E HGHEERE Active 5 Cancelling 5 Cancelled 奶 理 耿 河 消 理 E 简 化 的 Job 状 态 图 。 使 用 LAZY 启 动 的 协 程 还 可 能 有 初 始 New 状 态","libVersion":"0.5.0","langs":"chi_sim+eng"}
