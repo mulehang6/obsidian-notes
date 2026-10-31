@@ -80,8 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "f03976f9af996656",
@@ -195,11 +194,11 @@
               "type": "agent-client-chat-view",
               "state": {},
               "icon": "bot-message-square",
-              "title": "帮我生成此仓库的git提交信息"
+              "title": "New session"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "horizontal",
@@ -221,8 +220,10 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "a4bcadcc50808fe4",
+  "active": "0a6f72d8bbb1561f",
   "lastOpenFiles": [
+    "图片/kotlin协程学习/图4-2.png",
+    "图片/kotlin协程学习/图4-1.png",
     "图片/kotlin协程学习/竟态条件实例.png",
     "Kotlin/协程/协程学习.md",
     "Kotlin/协程/协程学习.md.tmp.31676.a0fdd8ec8615",
@@ -243,8 +244,6 @@
     "Kotlin/协程/协程学习.md.tmp.31676.b0dbe3080a8d",
     "Kotlin/协程/协程学习.md.tmp.31676.1d75141f4667",
     "Pasted image 20261027144548.png",
-    "图片/kotlin协程学习/协程父子关系.png",
-    "图片/kotlin协程学习/协程作用域示例.png",
     "Kotlin/协程/协程中的一些常见问题.md",
     "Kotlin/协程/进程与线程.md",
     "Kotlin/协程/线程，协程，Dispatcher.md",
